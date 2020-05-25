@@ -1,7 +1,7 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { globalStyles } from './styles/global-styles'
-import { GameMenu } from './components/game-menu';
+import { GameMenu } from './components/game_menu/game-menu';
 
 export default function App() {
   return (

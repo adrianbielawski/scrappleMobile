@@ -15,8 +15,10 @@
     "react-native-web": "~0.11.7"
   },
   "devDependencies": {
+    "@babel/core": "^7.8.6",
     "babel-preset-expo": "~8.1.0",
-    "@babel/core": "^7.8.6"
+    "i18next": "^19.4.4",
+    "react-i18next": "^11.5.0"
   },
   "private": true
 }
