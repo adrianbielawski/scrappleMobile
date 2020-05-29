@@ -1,4 +1,5 @@
 import i18n from 'i18next';
+import i18nextReactNative from 'i18next-react-native-language-detector'
 import { initReactI18next } from 'react-i18next';
 
 const resources = {
@@ -7,7 +8,7 @@ const resources = {
       //GameMenu
       "Language" : "Language",
       "Player's time limit" : "Player's time limit",
-      "Add player" : "Add player",
+      "Add Player" : "Add Player",
       "Player" : "Player",
       "Start game" : 'Start game',
       "Player with name {player} already exists": "Player with name {{player}} already exists",
@@ -59,7 +60,9 @@ const resources = {
       //GameMenu
       "Language" : 'Język',
       "Player's time limit" : 'Limit czasu',
-      "Add player" : 'Dodaj Gracza',
+      "Cancel" : "Wróć",
+      "Ok" : "Ok",
+      "Add Player" : 'Dodaj Gracza',
       "Player" : 'Gracz',
       "Start game" : 'Start',
       "Player with name {player} already exists" : "Gracz o imieniu {{player}} już istnieje",
@@ -110,10 +113,12 @@ const resources = {
 };
 
 i18n
+  .use(i18nextReactNative)
   .use(initReactI18next)
   .init({
     resources,
-    fallbackLng: 'en',
+    lang: 'en-GB',
+    fallbackLng: 'en-GB',
     debug: true,
     interpolation: {
       escapeValue: false,

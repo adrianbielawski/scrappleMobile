@@ -4,7 +4,7 @@ import { StyleSheet, View, Image, TouchableOpacity } from 'react-native';
 import { MyTransText } from '../../globalComponents/myTransText';
 import { Language } from './language';
 
-export const ChooseLanguage = () => {
+export const ChooseLanguage = ( {changeLanguage} ) => {
     const [currentLanguage, setCurrentLanguage] = useState(0)
     const [showLanguages, setShowLanguages] = useState(false)
     const languages = [
@@ -27,7 +27,9 @@ export const ChooseLanguage = () => {
     const changeLang = (index) => {
         setCurrentLanguage(index);
         setShowLanguages(!showLanguages);
-        i18n.changeLanguage(languages[index].symbol);
+        const newLanguage = languages[index].symbol;
+        i18n.changeLanguage(newLanguage);
+        changeLanguage(newLanguage);
     }
     
     const languagesStyle = showLanguages ? styles.showLanguages : '';
