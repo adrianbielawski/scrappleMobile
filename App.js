@@ -12,9 +12,12 @@ export default function App() {
       setLanguage(lang)
       i18n.changeLanguage(lang);
   }
+  
+  const startGame = (timer, time, players) => {}
+
   return (
     <View style={styles.container}>
-      <GameMenu changeLanguage={changeLanguage}/>
+      <GameMenu changeLanguage={changeLanguage} startGame={startGame}/>
     </View>
   );
 }

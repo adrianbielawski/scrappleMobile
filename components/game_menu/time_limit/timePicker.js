@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text, ScrollView } from 'react-native';
+import { StyleSheet, View, Text, ScrollView, Alert } from 'react-native';
 import { colors } from '../../../styles/colors';
 import { Button } from '../../globalComponents/button';
 
@@ -66,6 +66,20 @@ export const TimePicker = ({ toggleTimePicker, setTime}) => {
     const handleScrollSecStop = () => {
         secScroll.scrollTo({x: 0, y: secInView * 40, animated: true})
     }
+
+    const validateTime = () => {
+        if(minutes < 1) {
+            Alert.alert(
+                "Minimum player's time limit is 1 min",
+                '',
+                [{
+                    text: 'Ok',
+                }])
+            return
+        }
+
+        setTime(minutes, seconds)
+    }
     return (
         <View style={styles.wrapper}>
             <View style={styles.chooseTime}>
@@ -87,7 +101,7 @@ export const TimePicker = ({ toggleTimePicker, setTime}) => {
             </View>
             <View style={styles.buttons}>
                 <Button onPress={toggleTimePicker}>Cancel</Button>
-                <Button onPress={() => {setTime(minutes, seconds)}}>Ok</Button>
+                <Button onPress={validateTime}>Ok</Button>
             </View>
         </View>
     )    
