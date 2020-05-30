@@ -10,7 +10,10 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { Player } from './player';
 
 export const Players = ({ players, setPlayers }) => {
-    const [currentPlayers, setCurrentPlayers] = useState(players)
+    const [currentPlayers, setCurrentPlayers] = useState(players);
+    const [grabbedElement, setGrabbedElement] = useState(null);
+    const [elementsMovedUp, setElementsMovedUp] = useState([]);
+    const [elementsMovedDown, setElementsMovedDown] = useState([]);
 
     const checkPlayers = (player) => {
         const lowPlayer = player.toLowerCase();
@@ -64,6 +67,44 @@ export const Players = ({ players, setPlayers }) => {
         })
     }
 
+    const moveElements = (distance) => {
+        if(distance > 0) {
+            const elementToMove = grabbedElement + distance;
+            if(elementsMovedUp.includes(elementToMove)) {
+                const newElementsMovedUp = elementsMovedUp.filter((element, i) => elementToMove + 1 !== element);
+                setElementsMovedUp(newElementsMovedUp)
+            } else {
+                setElementsMovedUp([...elementsMovedUp, elementToMove])
+            }
+        } else if (distance < 0) {
+            const elementToMove = grabbedElement + distance;
+            if(elementsMovedDown.includes(elementToMove)) {
+                const newElementsMovedDown = elementsMovedDown.filter((element, i) => elementToMove - 1 !== element);
+                setElementsMovedDown(newElementsMovedDown)
+            } else {
+                setElementsMovedDown([...elementsMovedDown, elementToMove])
+            }
+        } else if (distance == 0) {
+            setElementsMovedUp([]);
+            setElementsMovedDown([]);
+        }
+    }
+
+    const reorderPlayers = (index, distance) => {
+        console.log('reorder')
+        let newIndex = index + distance
+        if(newIndex < 1) {
+            newIndex = 0;
+        } else if(newIndex >= currentPlayers.length) {
+            newIndex = players.length -1;
+        }
+        const newPlayers = currentPlayers.splice(newIndex, 0, currentPlayers.splice(index, 1)[0]);
+        setPlayers(newPlayers);
+        setGrabbedElement(null);
+        setElementsMovedDown([]);
+        setElementsMovedUp([]);
+    }
+    
     return (
         <View style={styles.wrapper}>
             <MyTransText>Add Player</MyTransText>
@@ -75,7 +116,11 @@ export const Players = ({ players, setPlayers }) => {
             >
                 {(props) => (
                     <View style={styles.addPlayer}>
-                        <TextInput style={[globalStyles.input, styles.input]} onChangeText={props.handleChange('player')} values={props.values.player}/>
+                        <TextInput
+                            style={[globalStyles.input, styles.input]}
+                            onChangeText={props.handleChange('player')}
+                            values={props.values.player}
+                        />
                         <RoundButton title={'submit'} textStyle={styles.plus} onPress={props.handleSubmit}>
                             <FontAwesomeIcon style={styles.plus} icon={ faPlus } size={24} />
                         </RoundButton>
@@ -86,9 +131,19 @@ export const Players = ({ players, setPlayers }) => {
                 style={styles.list}
                 data={currentPlayers}
                 renderItem={({item, index}) => (
-                    <Player player={item} index={index} key={index} removePlayer={removePlayer}></Player>
-                )
-            }/>
+                    <Player
+                        player={item}
+                        index={index}
+                        key={index}
+                        moveUp={elementsMovedUp.includes(index)}
+                        moveDown={elementsMovedDown.includes(index)}
+                        removePlayer={removePlayer}
+                        setGrabbedElement={(index) => {setGrabbedElement(index)}}
+                        moveElements={(distance) => {moveElements(distance)}}
+                        reorderPlayers={(index, distance) => {reorderPlayers(index, distance)}}>
+                    </Player>
+                )}
+            />
         </View>
     )    
 }
@@ -116,7 +171,7 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     list: {
-        width: '100%'
+        width: '100%',
     },
     plus: {
         color: '#fff',

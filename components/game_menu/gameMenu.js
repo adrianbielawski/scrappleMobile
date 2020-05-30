@@ -9,7 +9,7 @@ import { Button } from '../globalComponents/button';
 export const GameMenu = ({ changeLanguage, startGame }) => {
     const [timer, toggleTimer] = useState(false)
     const [time, setTime] = useState({min: '05', sec: '00'})
-    const [players, setPlayers] = useState(['aaa']);
+    const [players, setPlayers] = useState(['aaa', 'dfg', 'sg']);
 
     const validateForm = () => {
         if(timer === true && time.min < 1) {
