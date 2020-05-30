@@ -4,11 +4,13 @@ import { Button } from '../globalComponents/button';
 import { RoundButton } from '../globalComponents/roundButton';
 import { colors } from '../../styles/colors';
 import { globalStyles } from '../../styles/globalStyles';
+import { WordChecker } from './wordChecker';
 
 export const Game = (props) => {
 
     return (
         <View style={styles.wrapper}>
+            <WordChecker></WordChecker>
         </View>
     )    
 }
