@@ -62,7 +62,7 @@ const resources = {
       "Player's time limit" : 'Limit czasu',
       "Cancel" : "Wróć",
       "Ok" : "Ok",
-      "Add Player" : 'Dodaj Gracza',
+      "Add Player" : 'Dodaj gracza',
       "Player" : 'Gracz',
       "Start game" : 'Start',
       "Player with name {player} already exists" : "Gracz o imieniu {{player}} już istnieje",
@@ -119,7 +119,7 @@ i18n
     resources,
     lang: 'en-GB',
     fallbackLng: 'en-GB',
-    debug: true,
+    debug: false,
     interpolation: {
       escapeValue: false,
     }

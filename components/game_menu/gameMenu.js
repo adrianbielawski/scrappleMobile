@@ -38,7 +38,10 @@ export const GameMenu = ({ changeLanguage, startGame }) => {
             <Header />
             <View>
                 <ChooseLanguage changeLanguage={changeLanguage}/>
-                <TimeLimit toggleTimer={() => {toggleTimer(!timer)}} setTimeLimit={(min, sec) => {setTime({min, sec})}} defaultTime={time}/>
+                <TimeLimit
+                    toggleTimer={() => {toggleTimer(!timer)}}
+                    setTimeLimit={(min, sec) => {setTime({min, sec})}}
+                    defaultTime={time}/>
                 <Players setPlayers={(newPlayers) => {setPlayers(newPlayers)}} players={players}/>
                 <Button onPress={validateForm} style={styles.button}>Start game</Button>
             </View>

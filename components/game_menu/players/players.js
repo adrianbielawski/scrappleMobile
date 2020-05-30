@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, TextInput, FlatList, Alert } from 'react-native';
+import { StyleSheet, View, TextInput, FlatList, Alert, Keyboard } from 'react-native';
 import { Formik } from 'formik';
 import { colors } from '../../../styles/colors';
 import { globalStyles } from '../../../styles/globalStyles';
@@ -25,6 +25,7 @@ export const Players = ({ players, setPlayers }) => {
     }
     
     const addPlayer = (value) => {
+        Keyboard.dismiss()
         const player = value.player;
         const isPlayerExists = checkPlayers(player);
         
@@ -130,6 +131,7 @@ export const Players = ({ players, setPlayers }) => {
             <FlatList
                 style={styles.list}
                 data={currentPlayers}
+                keyExtractor={(item, index) => index.toString()}
                 renderItem={({item, index}) => (
                     <Player
                         player={item}
