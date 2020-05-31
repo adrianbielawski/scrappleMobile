@@ -92,7 +92,6 @@ export const Players = ({ players, setPlayers }) => {
     }
 
     const reorderPlayers = (index, distance) => {
-        console.log('reorder')
         let newIndex = index + distance
         if(newIndex < 1) {
             newIndex = 0;

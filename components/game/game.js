@@ -5,12 +5,14 @@ import { RoundButton } from '../globalComponents/roundButton';
 import { colors } from '../../styles/colors';
 import { globalStyles } from '../../styles/globalStyles';
 import { WordChecker } from './wordChecker';
+import { TwoLetterWords } from './twoLetterWords';
 
-export const Game = (props) => {
+export const Game = ({ language }) => {
 
     return (
         <View style={styles.wrapper}>
             <WordChecker></WordChecker>
+            <TwoLetterWords language={language}></TwoLetterWords>
         </View>
     )    
 }

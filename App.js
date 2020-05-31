@@ -8,7 +8,7 @@ import { Game } from './components/game/game';
 
 export default function App() {
   const [language, setLanguage] = useState('en-GB');
-  const [screen, setScreen] = useState('Game')
+  const [screen, setScreen] = useState('GameMenu')
   const [timer, setTimer] = useState(false);
   const [time, setTime] = useState(null);
   const [players, setPlayers] = useState([]);

@@ -26,10 +26,10 @@ const styles = StyleSheet.create({
         marginVertical: 5,
         borderRadius: 17.5,
         elevation: 3,
-      },
-      buttonText: {
-          color: '#fff',
-          fontWeight: '700',
-          fontSize: 20,
-      }
+    },
+    buttonText: {
+        color: '#fff',
+        fontWeight: '700',
+        fontSize: 20,
+    }
 });

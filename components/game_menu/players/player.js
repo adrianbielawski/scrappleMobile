@@ -107,7 +107,6 @@ const styles = StyleSheet.create({
         color: '#fff'
     },
     grabbed: {
-        zIndex: 100,
         width: '98%',
         elevation: 3,
         top: grabbedElementTop,

@@ -20,6 +20,6 @@ const styles = StyleSheet.create({
     img: {
         resizeMode: 'contain',
         flex: 1,
-        aspectRatio: 5.33
+        aspectRatio: 5.33,
     }
 });
