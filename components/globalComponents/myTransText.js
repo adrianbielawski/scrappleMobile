@@ -4,7 +4,7 @@ import { Trans } from 'react-i18next';
 
 export const MyTransText = (props) => {
     return (
-        <Text style={[styles.text, props.style]}><Trans>{props.children}</Trans></Text>
+        <Text style={[styles.text, props.style]}><Trans  i18nKey={props.i18nKey}>{props.children}</Trans></Text>
     )
 }
 

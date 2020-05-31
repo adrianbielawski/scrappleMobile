@@ -6,13 +6,17 @@ import { colors } from '../../styles/colors';
 import { globalStyles } from '../../styles/globalStyles';
 import { WordChecker } from './wordChecker';
 import { TwoLetterWords } from './twoLetterWords';
+import { CurrentPlayer } from './currentPlayer';
 
-export const Game = ({ language }) => {
+export const Game = ({ language, players, timer, time }) => {
+    const [currentPlayerNum, setCurrentPlayerNum] = useState(0);
+    const [currentPlayer, setCurrentPlayer] = useState(players[currentPlayerNum])
 
     return (
         <View style={styles.wrapper}>
             <WordChecker></WordChecker>
             <TwoLetterWords language={language}></TwoLetterWords>
+            <CurrentPlayer player={currentPlayer} timer={timer} time={time}></CurrentPlayer>
         </View>
     )    
 }

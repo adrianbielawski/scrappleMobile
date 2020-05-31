@@ -47,7 +47,8 @@ const styles = StyleSheet.create({
         top: 42,
         borderWidth: 1,
         borderColor: colors.borderDark,
-        elevation: 3
+        elevation: 5,
+        zIndex: 100
     },
     img: {
         resizeMode: 'contain',

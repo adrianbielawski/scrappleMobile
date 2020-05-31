@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import i18next from 'i18next';
 import { StyleSheet, View, TextInput, Image } from 'react-native';
 import { colors } from '../../styles/colors';
 import { globalStyles } from '../../styles/globalStyles';
@@ -68,6 +69,7 @@ export const WordChecker = (props) => {
                     autoCapitalize={'characters'}
                     onChangeText={(word) => {handleInputChange(word)}}
                     onTouchStart={() => {setWord('')}}
+                    placeholder={i18next.t("Check your word")}
                     value={word}>
                 </TextInput>
             <View>

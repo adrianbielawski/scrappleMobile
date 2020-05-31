@@ -6,10 +6,10 @@ import { TimeLimit } from './time_limit/timeLimit';
 import { Players } from './players/players';
 import { Button } from '../globalComponents/button';
 
-export const GameMenu = ({ changeLanguage, startGame }) => {
+export const GameMenu = (props) => {
     const [timer, toggleTimer] = useState(false)
     const [time, setTime] = useState({min: '05', sec: '00'})
-    const [players, setPlayers] = useState(['aaa', 'dfg', 'sg']);
+    const [players, setPlayers] = useState(props.players);
 
     const validateForm = () => {
         if(timer === true && time.min < 1) {
@@ -30,14 +30,14 @@ export const GameMenu = ({ changeLanguage, startGame }) => {
                 }])
             return
         }
-        startGame(timer, time, players)
+        props.startGame(timer, time, players)
     }
 
     return (
         <View>
             <Header />
             <View>
-                <ChooseLanguage changeLanguage={changeLanguage}/>
+                <ChooseLanguage changeLanguage={props.changeLanguage}/>
                 <TimeLimit
                     toggleTimer={() => {toggleTimer(!timer)}}
                     setTimeLimit={(min, sec) => {setTime({min, sec})}}

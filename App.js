@@ -11,7 +11,7 @@ export default function App() {
   const [screen, setScreen] = useState('GameMenu')
   const [timer, setTimer] = useState(false);
   const [time, setTime] = useState(null);
-  const [players, setPlayers] = useState([]);
+  const [players, setPlayers] = useState(['Adrian', 'Joanna', 'John', 'Grzegorz Brzeczyszczykiewicz']);
 
   const changeLanguage = (lang) => {
     setLanguage(lang)
@@ -29,7 +29,7 @@ export default function App() {
     let content = '';   
     switch(screen) {
       case 'GameMenu':
-        content = <GameMenu changeLanguage={changeLanguage} startGame={startGame}/>
+        content = <GameMenu changeLanguage={changeLanguage} startGame={startGame} players={players}/>
         break;
       case 'Game':
         content = <Game language={language} players={players} timer={timer} time={time}/>;

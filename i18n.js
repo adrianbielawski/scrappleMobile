@@ -25,8 +25,8 @@ const resources = {
       //WordChecker
       "Check your word" : "Check your word",
       //CurrentPlayer
-      "add points" : "add points",
-      "ItsTurnNow" : "It is <1>{{playerName}}</1>'s turn now",
+      "Add points" : "Add points",
+      "ItsTurnNow" : "It is <1>{{player}}</1>'s turn now",
       //PlayerStats
       "Current score" : "Current score",
       "All points" : "All points",
@@ -79,7 +79,7 @@ const resources = {
       //WordChecker
       "Check your word" : "Sprawdź słowo",
       //CurrentPlayer
-      "add points" : "dodaj punkty",
+      "Add points" : "Dodaj punkty",
       "ItsTurnNow" : "Teraz gra <1>{{playerName}}</1>",
       //PlayerStats
       "Current score" : "Suma punktów",
