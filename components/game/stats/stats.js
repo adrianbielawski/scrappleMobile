@@ -38,5 +38,5 @@ const styles = StyleSheet.create({
         minWidth: 300,
         maxWidth: 450,
         alignSelf: 'center'
-    }
+    },
 });

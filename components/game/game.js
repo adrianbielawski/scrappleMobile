@@ -5,6 +5,7 @@ import { WordChecker } from './wordChecker';
 import { TwoLetterWords } from './twoLetterWords';
 import { CurrentPlayer } from './currentPlayer';
 import { Stats } from './stats/stats';
+import { Button } from '../globalComponents/button';
 
 export const Game = (props) => {
     const [players, setPlayers] = useState(props.players)
@@ -46,6 +47,7 @@ export const Game = (props) => {
             <TwoLetterWords language={props.language}></TwoLetterWords>
             <CurrentPlayer player={currentPlayer} timer={props.timer} time={props.time} switchPlayer={switchPlayer} addPoints={addPoints} key={currentPlayer.id}></CurrentPlayer>
             <Stats players={players} currentPlayerNum={currentPlayerNum}></Stats>
+            <Button style={styles.button} onPress={props.finishGame}>Finish the game</Button>
         </View>
     )    
 }
@@ -55,5 +57,9 @@ const styles = StyleSheet.create({
         paddingTop: 30,
         flex: 1,
         backgroundColor: colors.background,
+    },
+    button : {
+        marginTop: 10,
+        alignSelf: 'center'
     }
 });

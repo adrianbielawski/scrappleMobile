@@ -20,7 +20,7 @@ export const TwoLetterWords = ({ language }) => {
     return (
         <View style={styles.wrapper}>
             <Button style={styles.button} onPress={() => {toggleShowWords(!showWords)}}>
-                {showWords ? 'Show two-letter words' : 'Hide two-letter words'}
+                {showWords ? 'Hide two-letter words' : 'Show two-letter words'}
             </Button>
             {showWords ?
                 <TouchableOpacity style={styles.imageContainer} onPress={() => {toggleShowWords(!showWords)}}>

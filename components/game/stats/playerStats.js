@@ -10,7 +10,7 @@ export const PlayerStats = ({ player }) => {
             <View style={styles.bestScore}>
                 <MyTransText>Best score: </MyTransText><MyText>{player.bestScore}</MyText>
             </View>
-            <FlatList 
+            <FlatList
                 data={player.allPoints}
                 keyExtractor={(item, index) => index.toString()}
                 renderItem={({item, index}) => (

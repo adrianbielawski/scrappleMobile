@@ -5,6 +5,7 @@ import './i18n';
 import { colors } from './styles/colors';
 import { GameMenu } from './components/game_menu/gameMenu';
 import { Game } from './components/game/game';
+import { SubtractPoints } from './components/subtract_points/subtractPoints';
 
 export default function App() {
   const [language, setLanguage] = useState('en-GB');
@@ -40,6 +41,10 @@ export default function App() {
     setPlayers(players)
   }
 
+  const finishGame = () => {
+    setScreen('SubtractPoints')
+  }
+
   const getContent = () => { 
     let content = '';   
     switch(screen) {
@@ -47,7 +52,10 @@ export default function App() {
         content = <GameMenu changeLanguage={changeLanguage} startGame={startGame} players={players} timer={timer} time={time}/>
         break;
       case 'Game':
-        content = <Game language={language} players={players} timer={timer} time={time}/>;
+        content = <Game language={language} players={players} timer={timer} time={time} finishGame={finishGame}/>;
+        break;
+      case 'SubtractPoints':
+        content = <SubtractPoints/>;
         break;
     }
     return content
