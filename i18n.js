@@ -28,7 +28,7 @@ const resources = {
       "Add points" : "Add points",
       "ItsTurnNow" : "It is <1>{{player}}</1>'s turn now",
       //PlayerStats
-      "Current score" : "Current score",
+      "Current score " : "Current score ",
       "All points" : "All points",
       "Best score" : "Best score",
       //RoundPoints
@@ -82,7 +82,7 @@ const resources = {
       "Add points" : "Dodaj punkty",
       "ItsTurnNow" : "Teraz gra <1>{{playerName}}</1>",
       //PlayerStats
-      "Current score" : "Suma punktów",
+      "Current score " : "Suma punktów ",
       "All points" : "Punkty",
       "Best score" : "Nalepszy wynik",
       //RoundPoints

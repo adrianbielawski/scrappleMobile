@@ -33,7 +33,7 @@ export default function App() {
         id: index,
         score: 0,
         bestScore: 0,
-        allPoints: [2, 3, 4],
+        allPoints: [],
       }
     });
 

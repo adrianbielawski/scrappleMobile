@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Audio } from 'expo-av';
+import { Formik } from 'formik';
 import i18next from 'i18next';
 import Moment from 'react-moment';//important
 import moment from 'moment';
-import { StyleSheet, View, TouchableOpacity, TextInput, Text } from 'react-native';
+import { StyleSheet, View, TextInput, Text } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faCheck } from '@fortawesome/free-solid-svg-icons'
 import { MyTransText } from '../globalComponents/myTransText';
@@ -45,7 +45,7 @@ export const CurrentPlayer = (props) => {
     }
 
     const timeOut = () => {
-        props.timeOut();
+        props.switchPlayer(true);
     }
 
     const getTimerClass = () => {
@@ -55,9 +55,8 @@ export const CurrentPlayer = (props) => {
         return timerClass   
     }
 
-    const addPoints = () => {
-        
-        clearInterval(startTimer);
+    const addPoints = (val) => {
+        props.addPoints(val.points);
     }
 
     return (
@@ -67,11 +66,29 @@ export const CurrentPlayer = (props) => {
                 <Text style={getTimerClass()}>{timeLeft}</Text>
             : null
             }
-            <View style={styles.addPoints}>
-                <TextInput style={[globalStyles.input, styles.input]} autoCapitalize={'characters'} placeholder={i18next.t("Add points")}></TextInput>
-                <RoundButton onPress={addPoints}>
-                    <FontAwesomeIcon style={styles.faCheck} icon={ faCheck } size={24} />
-                </RoundButton>
+            <View>
+            <Formik
+                style={styles.addPoints}
+                initialValues={{points: ''}}
+                onSubmit={(values) => {
+                    addPoints(values);
+                }}
+            >
+                {(props) => (
+                    <View style={styles.addPoints}>
+                        <TextInput
+                            style={[globalStyles.input, styles.input]}
+                            keyboardType={'numeric'}
+                            placeholder={i18next.t("Add points")}
+                            onChangeText={props.handleChange('points')}
+                            values={props.values.points}
+                        />
+                        <RoundButton type={'submit'} onPress={props.handleSubmit}>
+                            <FontAwesomeIcon style={styles.faCheck} icon={ faCheck } size={24} />
+                        </RoundButton>
+                    </View>
+                )}                    
+            </Formik>
             </View>
         </View>
     )    
