@@ -9,8 +9,8 @@ import { Game } from './components/game/game';
 export default function App() {
   const [language, setLanguage] = useState('en-GB');
   const [screen, setScreen] = useState('GameMenu')
-  const [timer, setTimer] = useState(false);
-  const [time, setTime] = useState(null);
+  const [timer, setTimer] = useState(true);
+  const [time, setTime] = useState({min: '01', sec: '00'});
   const [players, setPlayers] = useState(['Adrian', 'Joanna', 'John', 'Grzegorz Brzeczyszczykiewicz']);
 
   const changeLanguage = (lang) => {
@@ -23,13 +23,30 @@ export default function App() {
     setTime(time);
     setPlayers(players);
     setScreen('Game');
+
+    getPlayers(players);
+  }
+
+  const getPlayers = (playersNames) => {    
+    let players = playersNames.map((player, index) => {
+      return {
+        name: player,
+        id: index,
+        currentScore: 0,
+        currentGamePoints: 0,
+        bestScore: 0,
+        allPoints: [],
+      }
+    });
+
+    setPlayers(players)
   }
 
   const getContent = () => { 
     let content = '';   
     switch(screen) {
       case 'GameMenu':
-        content = <GameMenu changeLanguage={changeLanguage} startGame={startGame} players={players}/>
+        content = <GameMenu changeLanguage={changeLanguage} startGame={startGame} players={players} timer={timer} time={time}/>
         break;
       case 'Game':
         content = <Game language={language} players={players} timer={timer} time={time}/>;

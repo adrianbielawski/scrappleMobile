@@ -1,5 +1,7 @@
-import React, { useState }from 'react';
+import React, { useState, useEffect } from 'react';
 import i18next from 'i18next';
+import Moment from 'react-moment';//important
+import moment from 'moment';
 import { StyleSheet, View, TouchableOpacity, TextInput, Text } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faCheck } from '@fortawesome/free-solid-svg-icons'
@@ -8,18 +10,64 @@ import { colors } from '../../styles/colors';
 import { globalStyles } from '../../styles/globalStyles';
 import { RoundButton } from '../globalComponents/roundButton';
 
-export const CurrentPlayer = ({player, timer, time}) => {
-    const [timeLeft, setTimeLeft] = useState(time)
+export const CurrentPlayer = (props) => {
+    const [timeLeft, setTimeLeft] = useState(`${props.time.min}:${props.time.sec}`);
+    
+    useEffect(function() {
+        const newEndTime = moment().add({
+            'minutes': props.time.min,
+            'seconds': props.time.sec
+        });
+        
+        const interval = props.timer && setInterval(() => {updateTimer(newEndTime)}, 1000);
+        
+        return function cleanup() {
+            clearInterval(interval);
+          }
+       
+    }, []);
+
+    const updateTimer = (endTime) => {
+        const now = moment();
+        const diff = endTime.diff(now);
+        const duration = moment.duration(diff);
+        let timeLeft = duration.format('mm:ss',{trim: false});
+
+        const time = moment(timeLeft, 'mm:ss');
+        const time0 = moment('00:00', 'mm:ss');
+        const shortTime = moment('00:10', 'mm:ss');
+        
+        if(time.isSameOrBefore(shortTime) && time.isAfter(time0)) {
+            console.log('short-time')
+        }
+        if(time.isSame(time0)){
+            timeLeft = '00:00'
+            setTimeout(timeOut, 500);
+        }
+        setTimeLeft(timeLeft)
+    }
+
+    const timeOut = () => {
+        props.timeOut();
+    }
+
+    const getTimerClass = () => {
+        let time = moment(timeLeft, 'mm:ss')
+        let shortTime = moment('00:30', 'mm:ss');
+        let timerClass = time.isSameOrBefore(shortTime) ? [styles.timer, styles.shortTime] : [styles.timer];
+        return timerClass   
+    }
 
     const addPoints = () => {
-
+        
+        clearInterval(startTimer);
     }
 
     return (
         <View style={styles.wrapper}>
-            <MyTransText i18nKey="ItsTurnNow">It is <Text style={styles.playerName}>{player}</Text>'s turn now!</MyTransText>
-            {timer ?
-                <Text style={styles.timer}>{timeLeft.min}:{timeLeft.sec}</Text>
+            <MyTransText i18nKey="ItsTurnNow">It is <Text style={styles.playerName}>{props.player.name}</Text>'s turn now!</MyTransText>
+            {props.timer ?
+                <Text style={getTimerClass()}>{timeLeft}</Text>
             : null
             }
             <View style={styles.addPoints}>
@@ -51,6 +99,9 @@ const styles = StyleSheet.create({
         fontSize: 45,
         fontWeight: '700',
         color: colors.mainColor,
+    },
+    shortTime: {
+        color: '#f00'
     },
     input: {
         height: 40,

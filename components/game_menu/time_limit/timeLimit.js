@@ -5,8 +5,8 @@ import { globalStyles } from '../../../styles/globalStyles';
 import { MyTransText } from '../../globalComponents/myTransText';
 import { TimePicker } from './timePicker';
 
-export const TimeLimit = ({ setTimeLimit, defaultTime, toggleTimer}) => {
-    const [showTimer, setShowTimer] = useState(false);
+export const TimeLimit = ({ setTimeLimit, defaultTime, toggleTimer, timer}) => {
+    const [showTimer, setShowTimer] = useState(timer);
     const [min, setMin] = useState(defaultTime.min);
     const [sec, setSec] = useState(defaultTime.sec);
     const [timePicker, setTimePicker] = useState(false)

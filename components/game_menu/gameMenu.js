@@ -7,8 +7,8 @@ import { Players } from './players/players';
 import { Button } from '../globalComponents/button';
 
 export const GameMenu = (props) => {
-    const [timer, toggleTimer] = useState(false)
-    const [time, setTime] = useState({min: '05', sec: '00'})
+    const [timer, toggleTimer] = useState(props.timer)
+    const [time, setTime] = useState(props.time)
     const [players, setPlayers] = useState(props.players);
 
     const validateForm = () => {
@@ -41,6 +41,7 @@ export const GameMenu = (props) => {
                 <TimeLimit
                     toggleTimer={() => {toggleTimer(!timer)}}
                     setTimeLimit={(min, sec) => {setTime({min, sec})}}
+                    timer={timer}
                     defaultTime={time}/>
                 <Players setPlayers={(newPlayers) => {setPlayers(newPlayers)}} players={players}/>
                 <Button onPress={validateForm} style={styles.button}>Start game</Button>
