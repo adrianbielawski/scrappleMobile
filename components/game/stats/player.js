@@ -1,19 +1,21 @@
 import React, { useState }from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Button } from '../../globalComponents/button';
-import { RoundButton } from '../../globalComponents/roundButton';
-import { colors } from '../../../styles/colors';
-import { globalStyles } from '../../../styles/globalStyles';
 import { MyText } from '../../globalComponents/myText';
+import { PlayerStats } from './playerStats';
 
 export const Player = ({ player, isPlayingNow }) => {
+    const [showStats, toggleShowStats] = useState(false)
     return (
         <View style={isPlayingNow ? [styles.wrapper, styles.current] : [styles.wrapper]}>
             <MyText style={styles.playerName}>{player.name}</MyText>
             <View style={styles.score}>
                 <MyText>Current score {player.score}</MyText>
-                <Button style={styles.button}>All points</Button>
+                <Button style={styles.button} onPress={() => {toggleShowStats(!showStats)}}>All points</Button>
             </View>
+            {
+                showStats && <PlayerStats player={player}></PlayerStats>
+            }
         </View>
     )    
 }
