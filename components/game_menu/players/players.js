@@ -92,13 +92,17 @@ export const Players = ({ players, setPlayers }) => {
     }
 
     const reorderPlayers = (index, distance) => {
+    const newPlayers = currentPlayers;
         let newIndex = index + distance
+        
         if(newIndex < 1) {
             newIndex = 0;
         } else if(newIndex >= currentPlayers.length) {
-            newIndex = players.length -1;
+            newIndex = currentPlayers.players.length -1;
         }
-        const newPlayers = currentPlayers.splice(newIndex, 0, currentPlayers.splice(index, 1)[0]);
+        
+        newPlayers.splice(newIndex, 0, currentPlayers.splice(index, 1)[0]);
+        
         setPlayers(newPlayers);
         setGrabbedElement(null);
         setElementsMovedDown([]);

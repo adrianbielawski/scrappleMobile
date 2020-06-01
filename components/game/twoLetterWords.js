@@ -33,7 +33,7 @@ export const TwoLetterWords = ({ language }) => {
 
 const styles = StyleSheet.create({
     wrapper: {
-        marginTop: 15,
+        marginTop: 5,
     },
     button: {
         width: 300,

@@ -9,6 +9,7 @@ import { globalStyles } from '../../styles/globalStyles';
 import { WordChecker } from './wordChecker';
 import { TwoLetterWords } from './twoLetterWords';
 import { CurrentPlayer } from './currentPlayer';
+import { Stats } from './stats/stats';
 
 export const Game = ({ language, players, timer, time }) => {
     const [currentPlayerNum, setCurrentPlayerNum] = useState(0);
@@ -25,13 +26,14 @@ export const Game = ({ language, players, timer, time }) => {
             <WordChecker></WordChecker>
             <TwoLetterWords language={language}></TwoLetterWords>
             <CurrentPlayer player={currentPlayer} timer={timer} time={time} timeOut={timeOut} key={currentPlayer.id}></CurrentPlayer>
+            <Stats players={players} currentPlayerNum={currentPlayerNum}></Stats>
         </View>
     )    
 }
 
 const styles = StyleSheet.create({
     wrapper: {
-        paddingTop: 40,
+        paddingTop: 30,
         flex: 1,
         backgroundColor: colors.background,
     }

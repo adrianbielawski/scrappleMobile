@@ -92,6 +92,6 @@ const styles = StyleSheet.create({
         width: '90%',
     },
     image: {
-        marginTop: 20,
+        marginTop: 10,
     }
 });

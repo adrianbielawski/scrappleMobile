@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Audio } from 'expo-av';
 import i18next from 'i18next';
 import Moment from 'react-moment';//important
 import moment from 'moment';
@@ -35,11 +36,7 @@ export const CurrentPlayer = (props) => {
 
         const time = moment(timeLeft, 'mm:ss');
         const time0 = moment('00:00', 'mm:ss');
-        const shortTime = moment('00:10', 'mm:ss');
-        
-        if(time.isSameOrBefore(shortTime) && time.isAfter(time0)) {
-            console.log('short-time')
-        }
+
         if(time.isSame(time0)){
             timeLeft = '00:00'
             setTimeout(timeOut, 500);
@@ -65,7 +62,7 @@ export const CurrentPlayer = (props) => {
 
     return (
         <View style={styles.wrapper}>
-            <MyTransText i18nKey="ItsTurnNow">It is <Text style={styles.playerName}>{props.player.name}</Text>'s turn now!</MyTransText>
+            <MyTransText style={styles.nowPlaying} i18nKey="ItsTurnNow">It is <Text style={styles.playerName}>{props.player.name}</Text>'s turn now!</MyTransText>
             {props.timer ?
                 <Text style={getTimerClass()}>{timeLeft}</Text>
             : null
@@ -82,12 +79,15 @@ export const CurrentPlayer = (props) => {
 
 const styles = StyleSheet.create({
     wrapper: {
-        marginTop: 15,
         alignItems: 'center',
+    },
+    nowPlaying: {
+        
+        textAlign: 'center'
     },
     playerName: {
         fontWeight: '700',
-        fontSize: 35
+        fontSize: 35,
     },
     addPoints: {
         flex: 0,

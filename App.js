@@ -23,7 +23,6 @@ export default function App() {
     setTime(time);
     setPlayers(players);
     setScreen('Game');
-
     getPlayers(players);
   }
 
@@ -32,8 +31,7 @@ export default function App() {
       return {
         name: player,
         id: index,
-        currentScore: 0,
-        currentGamePoints: 0,
+        score: 0,
         bestScore: 0,
         allPoints: [],
       }
