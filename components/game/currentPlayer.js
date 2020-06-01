@@ -6,6 +6,7 @@ import moment from 'moment';
 import { StyleSheet, View, TextInput, Text } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faCheck } from '@fortawesome/free-solid-svg-icons'
+import { MyText } from '../globalComponents/myText';
 import { MyTransText } from '../globalComponents/myTransText';
 import { colors } from '../../styles/colors';
 import { globalStyles } from '../../styles/globalStyles';
@@ -14,7 +15,7 @@ import { RoundButton } from '../globalComponents/roundButton';
 export const CurrentPlayer = (props) => {
     const [timeLeft, setTimeLeft] = useState(`${props.time.min}:${props.time.sec}`);
     
-    useEffect(function() {
+    useEffect(() => {
         const newEndTime = moment().add({
             'minutes': props.time.min,
             'seconds': props.time.sec
@@ -61,7 +62,7 @@ export const CurrentPlayer = (props) => {
 
     return (
         <View style={styles.wrapper}>
-            <MyTransText style={styles.nowPlaying} i18nKey="ItsTurnNow">It is <Text style={styles.playerName}>{props.player.name}</Text>'s turn now!</MyTransText>
+            <MyTransText style={styles.nowPlaying} i18nKey={'ItsTurnNow'}>It is <MyText style={styles.playerName}>{props.player.name}</MyText>'s turn now!</MyTransText>
             {props.timer ?
                 <Text style={getTimerClass()}>{timeLeft}</Text>
             : null

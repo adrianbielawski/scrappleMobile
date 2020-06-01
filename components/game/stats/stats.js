@@ -1,20 +1,23 @@
-import React, { useState }from 'react';
-import { StyleSheet, View, ScrollView, FlatList } from 'react-native';
-import { Button } from '../../globalComponents/button';
-import { RoundButton } from '../../globalComponents/roundButton';
-import { colors } from '../../../styles/colors';
-import { globalStyles } from '../../../styles/globalStyles';
+import React, { useState, useEffect }from 'react';
+import { StyleSheet, View, FlatList } from 'react-native';
 import { Player } from './player';
 
 export const Stats = (props) => {
     const [currentPlayerNum, setCurrentPlayerNum] = useState(props.currentPlayerNum);
+    let flatListRef = '';
+    useEffect(() => {
+        setCurrentPlayerNum(props.currentPlayerNum);
+        flatListRef.scrollToIndex({animated: true, index: props.currentPlayerNum})
+    });
 
     return (
         <View style={styles.wrapper}>
             <FlatList
                 style={styles.list}
                 data={props.players}
+                ref={(ref) => { flatListRef = ref; }}
                 keyExtractor={(item, index) => index.toString()}
+                scrollToIndex={currentPlayerNum}
                 renderItem={({item}) => (
                     <Player
                         player={item}

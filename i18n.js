@@ -26,7 +26,7 @@ const resources = {
       "Check your word" : "Check your word",
       //CurrentPlayer
       "Add points" : "Add points",
-      "ItsTurnNow" : "It is <1>{{player}}</1>'s turn now",
+      "ItsTurnNow" : "It is {{name}}'s turn now",
       //PlayerStats
       "Current score " : "Current score ",
       "All points" : "All points",
@@ -80,7 +80,7 @@ const resources = {
       "Check your word" : "Sprawdź słowo",
       //CurrentPlayer
       "Add points" : "Dodaj punkty",
-      "ItsTurnNow" : "Teraz gra <1>{{playerName}}</1>",
+      "ItsTurnNow" : "Teraz gra <1>{{name}}</1>",
       //PlayerStats
       "Current score " : "Suma punktów ",
       "All points" : "Punkty",

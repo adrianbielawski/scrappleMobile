@@ -7,6 +7,7 @@ import { MyTransText } from '../../globalComponents/myTransText';
 
 export const Player = ({ player, isPlayingNow }) => {
     const [showStats, toggleShowStats] = useState(false)
+    
     return (
         <View style={isPlayingNow ? [styles.wrapper, styles.current] : [styles.wrapper]}>
             <MyText style={styles.playerName}>{player.name}</MyText>
