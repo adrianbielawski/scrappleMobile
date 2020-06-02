@@ -12,4 +12,9 @@ export const globalStyles = StyleSheet.create({
         alignItems: 'center',
         width: 200,
     },
+    title: {
+        fontSize: 35,
+        marginBottom: 30,
+        textAlign: 'center'
+    },
 })

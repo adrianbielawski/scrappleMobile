@@ -37,7 +37,7 @@ export const GameMenu = (props) => {
         <View>
             <Header />
             <View>
-                <ChooseLanguage changeLanguage={props.changeLanguage}/>
+                <ChooseLanguage language={props.language} changeLanguage={props.changeLanguage}/>
                 <TimeLimit
                     toggleTimer={() => {toggleTimer(!timer)}}
                     setTimeLimit={(min, sec) => {setTime({min, sec})}}

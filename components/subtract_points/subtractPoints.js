@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, FlatList, TextInput } from 'react-native';
+import { StyleSheet, View, FlatList, TextInput, ScrollView } from 'react-native';
 import { Formik } from 'formik';
 import { Header } from '../globalComponents/header';
 import { MyText } from '../globalComponents/myText';
@@ -7,7 +7,7 @@ import { Button } from '../globalComponents/button';
 import { globalStyles } from '../../styles/globalStyles';
 import { colors } from '../../styles/colors';
 
-export const SubtractPoints = ({ players, handleSubtraction }) => {
+export const SubtractPoints = ({ players, getPlaces }) => {
     const getValues = () => {
         const values = players.map((player, index) => {
             return `player${index}`
@@ -25,25 +25,23 @@ export const SubtractPoints = ({ players, handleSubtraction }) => {
             return player
         })
         
-        handleSubtraction(newPlayers)
+        getPlaces(newPlayers)
     }
 
     return (
-        <View>
+        <View style={styles.wrapper}>
             <Header></Header>
-            <View style={styles.wrapper}>
-                <MyText style={styles.title}>Subtract points of unused letters</MyText>
+            <MyText style={globalStyles.title}>Subtract points of unused letters</MyText>
+            <ScrollView style={styles.list}>
                 <Formik
-                    style={styles.list}
                     initialValues={getValues}
                     onSubmit={(values) => {
                         subtractPoints(values);
                     }}
                 >
                     {(props) => (
-                        <View style={styles.player}>
+                        <View>
                             <FlatList
-                                contentContainerStyle={styles.list}
                                 data={players}
                                 keyExtractor={(item, index) => index.toString()}
                                 renderItem={({item, index}) => (
@@ -63,23 +61,18 @@ export const SubtractPoints = ({ players, handleSubtraction }) => {
                         </View>                                 
                     )}                    
                 </Formik>
-            </View>
+            </ScrollView>
         </View>
     )    
 }
 
 const styles = StyleSheet.create({
     wrapper: {
-        width: '98%',
-        alignSelf: 'center'
-    },
-    title: {
-        fontSize: 35,
-        marginBottom: 30,
-        textAlign: 'center'
+        flex: 1,
     },
     list: {
-        flex: 0,
+        width: '98%',
+        alignSelf: 'center'
     },
     playerWrapper: {
         flex: 1,
@@ -91,7 +84,7 @@ const styles = StyleSheet.create({
         paddingVertical: 5,
         paddingHorizontal: 5,
         marginVertical: 5,
-        backgroundColor: colors.background,
+        backgroundColor: colors.offWhite,
         borderColor: colors.borderLight,
         borderWidth: 1,
         elevation: 2,
@@ -99,7 +92,7 @@ const styles = StyleSheet.create({
     name: {
         flex: 1,
         flexWrap: 'wrap',
-        fontSize: 35,
+        fontSize: 25,
         textAlign: 'center',
         
     },

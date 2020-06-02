@@ -4,32 +4,31 @@ import { StyleSheet, View, Image, TouchableOpacity } from 'react-native';
 import { MyTransText } from '../../globalComponents/myTransText';
 import { Language } from './language';
 
-export const ChooseLanguage = ( {changeLanguage} ) => {
-    const [currentLanguage, setCurrentLanguage] = useState(0)
+export const ChooseLanguage = ( {language, changeLanguage} ) => {
+    const [currentLanguage, setCurrentLanguage] = useState(language)
     const [showLanguages, setShowLanguages] = useState(false)
-    const languages = [
-        {
+    const languages = {
+        'en-GB': {
             name: 'English',
             symbol: 'en-GB',
             flag: require('../../../assets/img/en-GB-flag.png')
         },
-        {
+        'pl-PL': {
             name: 'Polski',
             symbol: 'pl-PL',
             flag: require('../../../assets/img/pl-PL-flag.png')
         }
-    ]
+    }
 
     const toggleShowLanguages = () => {
         setShowLanguages(!showLanguages)
     }
 
-    const changeLang = (index) => {
-        setCurrentLanguage(index);
+    const changeLang = (symbol) => {
+        setCurrentLanguage(symbol);
         setShowLanguages(!showLanguages);
-        const newLanguage = languages[index].symbol;
-        i18n.changeLanguage(newLanguage);
-        changeLanguage(newLanguage);
+        i18n.changeLanguage(symbol);
+        changeLanguage(symbol);
     }
     
     const languagesStyle = showLanguages ? styles.showLanguages : '';
@@ -43,8 +42,8 @@ export const ChooseLanguage = ( {changeLanguage} ) => {
                 </View>
             </TouchableOpacity>
             <View style={[styles.languages, languagesStyle]}>
-                {languages.map((lang, i) => {
-                    return <Language lang={lang} key={i} index={i} styles={styles} changeLang={changeLang}/>
+                {Object.entries(languages).map((lang, i) => {
+                    return <Language lang={lang} key={i} changeLang={changeLang}/>
                 })}
             </View>
         </View>

@@ -13,7 +13,6 @@ export const Stats = (props) => {
     return (
         <View style={styles.wrapper}>
             <FlatList
-                style={styles.list}
                 data={props.players}
                 ref={(ref) => { flatListRef = ref; }}
                 keyExtractor={(item, index) => index.toString()}
