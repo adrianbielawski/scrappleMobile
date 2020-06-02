@@ -45,6 +45,13 @@ export default function App() {
     setScreen('SubtractPoints')
   }
 
+  const handleSubtraction = (players) => {
+    setPlayers(players);
+    //setScreen('GameSummary');
+  }
+
+  console.log(players)
+
   const getContent = () => { 
     let content = '';   
     switch(screen) {
@@ -55,7 +62,7 @@ export default function App() {
         content = <Game language={language} players={players} timer={timer} time={time} finishGame={finishGame}/>;
         break;
       case 'SubtractPoints':
-        content = <SubtractPoints/>;
+        content = <SubtractPoints players={players} handleSubtraction={handleSubtraction}/>;
         break;
     }
     return content
