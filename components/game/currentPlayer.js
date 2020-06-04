@@ -59,10 +59,10 @@ export const CurrentPlayer = (props) => {
     const addPoints = (val) => {
         props.addPoints(val.points);
     }
-
+    
     return (
         <View style={styles.wrapper}>
-            <MyTransText style={styles.nowPlaying} i18nKey={'ItsTurnNow'}>It is <MyText style={styles.playerName}>{props.player.name}</MyText>'s turn now!</MyTransText>
+            <MyTransText style={styles.nowPlaying}>{i18next.t(`ItsTurnNow`, {name: props.player.name})}<MyText style={styles.playerName}></MyText></MyTransText>
             {props.timer ?
                 <Text style={getTimerClass()}>{timeLeft}</Text>
             : null

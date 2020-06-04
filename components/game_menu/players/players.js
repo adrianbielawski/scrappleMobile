@@ -63,9 +63,9 @@ export const Players = ({ players, setPlayers }) => {
     }
 
     const removePlayer = (i) => {
-        setCurrentPlayers((prevPlayers) => {
-            return prevPlayers.filter((player, index) => i !== index)
-        })
+        const newPlayers = currentPlayers.filter((player, index) => i !== index)
+        setCurrentPlayers(newPlayers)
+        setPlayers(newPlayers);
     }
 
     const moveElements = (distance) => {
@@ -114,8 +114,9 @@ export const Players = ({ players, setPlayers }) => {
             <MyTransText>Add Player</MyTransText>
             <Formik
                 initialValues={{player: ''}}
-                onSubmit={(values) => {
+                onSubmit={(values, {resetForm}) => {
                     addPlayer(values);
+                    resetForm();
                 }}
             >
                 {(props) => (

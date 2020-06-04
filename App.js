@@ -13,7 +13,7 @@ export default function App() {
 	const [screen, setScreen] = useState('GameMenu')
 	const [timer, setTimer] = useState(true);
 	const [time, setTime] = useState({min: '01', sec: '00'});
-	const [players, setPlayers] = useState(['Adrian biesddslawski', 'Joanna bielawssssska', 'John bielawssssski', 'Grzegorz Brzeczyszczykiewicz']);
+	const [players, setPlayers] = useState(['Adrian', 'Joanna']);
 	const [playersSummary, setPlayersSummary] = useState([]);
 
 	const changeLanguage = (lang) => {
@@ -127,7 +127,7 @@ export default function App() {
 
 	return (
 		<View style={styles.container}>
-		{getContent()}
+			{getContent()}
 		</View>
 	);
 }

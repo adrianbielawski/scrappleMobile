@@ -40,7 +40,7 @@ export const TimeLimit = ({ setTimeLimit, defaultTime, toggleTimer, timer}) => {
             </View>
             <TouchableOpacity onPress={toggleTimePicker}>
                 <View style={[globalStyles.input, showTimer ? styles.showInput : styles.hiddenInput]} >
-                    <Text style={styles.time}>{min} : {sec}</Text>
+                    <Text style={styles.time}>{min}:{sec}</Text>
                 </View>
             </TouchableOpacity>
             {timePicker && <TimePicker toggleTimePicker={toggleTimePicker} setTime={setTime}/>}

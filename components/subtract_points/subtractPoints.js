@@ -1,8 +1,9 @@
 import React from 'react';
-import { StyleSheet, View, FlatList, TextInput, ScrollView } from 'react-native';
+import { StyleSheet, View, FlatList, TextInput } from 'react-native';
 import { Formik } from 'formik';
 import { Header } from '../globalComponents/header';
 import { MyText } from '../globalComponents/myText';
+import { MyTransText } from '../globalComponents/myTransText';
 import { Button } from '../globalComponents/button';
 import { globalStyles } from '../../styles/globalStyles';
 import { colors } from '../../styles/colors';
@@ -31,37 +32,36 @@ export const SubtractPoints = ({ players, getPlaces }) => {
     return (
         <View style={styles.wrapper}>
             <Header></Header>
-            <MyText style={globalStyles.title}>Subtract points of unused letters</MyText>
-            <ScrollView style={styles.list}>
-                <Formik
-                    initialValues={getValues}
-                    onSubmit={(values) => {
-                        subtractPoints(values);
-                    }}
-                >
-                    {(props) => (
-                        <View>
-                            <FlatList
-                                data={players}
-                                keyExtractor={(item, index) => index.toString()}
-                                renderItem={({item, index}) => (
-                                    <View style={styles.playerWrapper}>
-                                        <MyText style={styles.name}>{item.name}</MyText>
-                                        <TextInput
-                                            style={[globalStyles.input, styles.input]}
-                                            onChangeText={props.handleChange(`player${index}`)}
-                                            placeholder={'0'}
-                                            keyboardType={'numeric'}
-                                        />
-                                    </View>
-                                )}
-                            >
-                            </FlatList>
-                            <Button style={styles.button} onPress={props.handleSubmit}>Continue</Button>
-                        </View>                                 
-                    )}                    
-                </Formik>
-            </ScrollView>
+            <MyTransText style={globalStyles.title}>Subtract points of unused letters</MyTransText>
+            <Formik
+                style={styles.list}
+                initialValues={getValues}
+                onSubmit={(values) => {
+                    subtractPoints(values);
+                }}
+            >
+                {(props) => (
+                    <View>
+                        <FlatList
+                            data={players}
+                            keyExtractor={(item, index) => index.toString()}
+                            renderItem={({item, index}) => (
+                                <View style={styles.playerWrapper}>
+                                    <MyText style={styles.name}>{item.name}</MyText>
+                                    <TextInput
+                                        style={[globalStyles.input, styles.input]}
+                                        onChangeText={props.handleChange(`player${index}`)}
+                                        placeholder={'0'}
+                                        keyboardType={'numeric'}
+                                    />
+                                </View>
+                            )}
+                        >
+                        </FlatList>
+                        <Button style={styles.button} onPress={props.handleSubmit}>Continue</Button>
+                    </View>                                 
+                )}                    
+            </Formik>
         </View>
     )    
 }
@@ -75,7 +75,6 @@ const styles = StyleSheet.create({
         alignSelf: 'center'
     },
     playerWrapper: {
-        flex: 1,
         flexDirection: 'row',
         alignSelf: 'center',
         alignItems: 'center',

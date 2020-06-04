@@ -1,6 +1,6 @@
 import React from 'react';
-import { StyleSheet, View, FlatList, ScrollView, Image } from 'react-native';
-import { Formik } from 'formik';
+import { StyleSheet, View, FlatList, Image } from 'react-native';
+import i18next from 'i18next';
 import { Header } from '../globalComponents/header';
 import { MyText } from '../globalComponents/myText';
 import { Button } from '../globalComponents/button';
@@ -15,12 +15,11 @@ const images = {
 }
 
 export const GameSummary = ({ players, exitGame }) => {
-    console.log(players[2].score)
     return (
         <View style={styles.wrapper}>
             <Header></Header>
             <MyTransText style={globalStyles.title}>Game results</MyTransText>
-            <ScrollView>
+            <View style={styles.wrapper}>
                 <FlatList
                     style={styles.list}
                     data={players}
@@ -28,19 +27,20 @@ export const GameSummary = ({ players, exitGame }) => {
                     renderItem={({item, index}) => (
                         <View style={styles.playerWrapper}>
                             <View style={styles.place}>
-                                <MyTransText style={styles.place}>{item.place.text} place</MyTransText>
-                                <Image style={styles.image} source={images[item.place.text]}></Image>
+                                <MyText style={styles.place}>{i18next.t(`${item.place.text} place`, {num: item.place.text})}</MyText>
+                                <Image source={images[item.place.text]}></Image>
                             </View>
                             <MyText style={styles.name}>{item.name}</MyText>
                             <View style={styles.resoult}>
-                                <MyTransText>Total: {item.score}</MyTransText>
-                                <MyTransText>Best score: {item.bestScore}</MyTransText>
+                                <MyText>{i18next.t('Total', {score: item.score})}<MyText style={styles.score}>{item.score}</MyText></MyText>
+                                <MyText>{i18next.t('Best score', {score: item.bestScore})}<MyText style={styles.score}>{item.bestScore}</MyText></MyText>
                             </View>
                         </View>
                     )}
                 />
-            </ScrollView>
-            <Button style={styles.button} onPress={exitGame}>Exit</Button>
+                <Button style={styles.button} onPress={exitGame}>Exit</Button>
+                <View style={{flex: 1000}}></View>
+            </View>
         </View>
     )    
 }
@@ -50,6 +50,7 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     list: {
+        flex: 0,
         width: '98%',
         alignSelf: 'center'
     },
@@ -68,18 +69,28 @@ const styles = StyleSheet.create({
     },
     place: {
         flexDirection: 'row',
-        fontSize: 30
+        fontSize: 30,
+        marginRight: 10
     },
     name: {
         fontSize: 30,
         textAlign: 'center'
     },
     resoult: {
+        width: '100%',
+        height: 30,
         flexDirection: 'row',
+        alignItems: 'flex-end',
+        justifyContent: 'space-evenly'
     },
     button: {
         width: 250,
         marginTop: 10,
         alignSelf: 'center'
+    },
+    score: {
+        fontSize: 25,
+        lineHeight: 25,
+        fontWeight: '700'
     }
 });

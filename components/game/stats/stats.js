@@ -11,28 +11,26 @@ export const Stats = (props) => {
     });
 
     return (
-        <View style={styles.wrapper}>
-            <FlatList
-                data={props.players}
-                ref={(ref) => { flatListRef = ref; }}
-                keyExtractor={(item, index) => index.toString()}
-                scrollToIndex={currentPlayerNum}
-                renderItem={({item}) => (
-                    <Player
-                        player={item}
-                        isPlayingNow={currentPlayerNum == item.id ? true : false}
-                        index={item.id}>
-                    </Player>
-                )}
-            />
-        </View>
+        <FlatList
+            style={styles.list}
+            data={props.players}
+            ref={(ref) => { flatListRef = ref; }}
+            keyExtractor={(item, index) => index.toString()}
+            scrollToIndex={currentPlayerNum}
+            renderItem={({item}) => (
+                <Player
+                    player={item}
+                    isPlayingNow={currentPlayerNum == item.id ? true : false}
+                    index={item.id}>
+                </Player>
+            )}
+        />
     )    
 }
 
 const styles = StyleSheet.create({
-    wrapper: {
+    list: {
         paddingTop: 10,
-        flex: 1,
         width: '95%',
         minWidth: 300,
         maxWidth: 450,

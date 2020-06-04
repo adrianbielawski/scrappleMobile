@@ -1,5 +1,5 @@
 import React, { useState }from 'react';
-import { StyleSheet, View, ScrollView } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { colors } from '../../styles/colors';
 import { WordChecker } from './wordChecker';
 import { TwoLetterWords } from './twoLetterWords';
@@ -46,10 +46,9 @@ export const Game = (props) => {
             <WordChecker></WordChecker>
             <TwoLetterWords language={props.language}></TwoLetterWords>
             <CurrentPlayer player={currentPlayer} timer={props.timer} time={props.time} switchPlayer={switchPlayer} addPoints={addPoints} key={currentPlayer.id}></CurrentPlayer>
-            <ScrollView>
-                <Stats players={players} currentPlayerNum={currentPlayerNum}></Stats>
-                <Button style={styles.button} onPress={props.finishGame}>Finish the game</Button>
-            </ScrollView>
+            <Stats players={players} currentPlayerNum={currentPlayerNum}></Stats>
+            <Button style={styles.button} onPress={props.finishGame}>Finish the game</Button>
+            <View style={{flex: 1000}}></View>
         </View>
     )    
 }
@@ -61,6 +60,6 @@ const styles = StyleSheet.create({
         backgroundColor: colors.background,
     },
     button : {
-        alignSelf: 'center'
-    }
+        alignSelf: 'center',
+    },
 });

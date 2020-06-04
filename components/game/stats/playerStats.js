@@ -1,24 +1,22 @@
 import React from 'react';
 import { StyleSheet, View, FlatList } from 'react-native';
+import i18next from 'i18next';
 import { colors } from '../../../styles/colors';
 import { MyText } from '../../globalComponents/myText';
-import { MyTransText } from '../../globalComponents/myTransText';
 
 export const PlayerStats = ({ player }) => {
     return (
         <View style={styles.wrapper}>
             <View style={styles.bestScore}>
-                <MyTransText>Best score: </MyTransText><MyText>{player.bestScore}</MyText>
+                <MyText>{i18next.t(`BestScoreNum`, {points: player.bestScore})}</MyText>
             </View>
             <FlatList
                 data={player.allPoints}
                 keyExtractor={(item, index) => index.toString()}
                 renderItem={({item, index}) => (
                     <View style={styles.round}>
-                        <View style={styles.roundNum}>
-                            <MyTransText>Round</MyTransText><MyText> {index + 1}:</MyText>
-                        </View>
-                        <MyTransText>{{item}} points</MyTransText>
+                        <MyText style={styles.roundNum}>{i18next.t(`RoundNum`, {num: index + 1})}</MyText>
+                        <MyText>{i18next.t('PointsCount.key', {count: item})}</MyText>
                     </View>
                 )}
             />
@@ -58,10 +56,9 @@ const styles = StyleSheet.create({
         alignSelf: 'center'
     },
     roundNum: {
-        flexDirection: 'row',
         width: '50%',
         paddingRight: 10,
-        justifyContent: 'flex-end'
+        textAlign: 'right'
     },
     button: {
         marginBottom: 5
