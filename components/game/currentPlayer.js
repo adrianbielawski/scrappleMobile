@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Formik } from 'formik';
+import { Formik, isInteger } from 'formik';
 import i18next from 'i18next';
 import Moment from 'react-moment';//important
 import moment from 'moment';
@@ -57,9 +57,26 @@ export const CurrentPlayer = (props) => {
     }
 
     const handleSubmit = (values) => {
-        let points = parseInt(values.points);
-        points = isNaN(points) ? 0 : points;
-        props.addPoints(points);
+        let points = values.points;
+        const isValid = validateUserInput(points);
+        if(!isValid) {
+            return
+        }
+        props.addPoints(parseInt(points));
+    }
+
+    const validateUserInput = (points) => {
+        if(points < 0 || !isInteger(points)) {
+            Alert.alert(
+                i18next.t("MustBeInt0+"),
+                '',
+                [{
+                    text: 'Ok',
+                }]
+            )
+            return
+        }
+        return true
     }
     
     return (

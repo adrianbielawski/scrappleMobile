@@ -152,6 +152,7 @@ const styles = StyleSheet.create({
     },
     list: {
         width: '100%',
+        position: 'relative'
     },
     plus: {
         color: '#fff',

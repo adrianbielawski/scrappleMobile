@@ -10,6 +10,7 @@ const images = {
 };
 
 export const WordChecker = (props) => {
+    const [language, setLanguage] = useState(props.language)
     const [valid, setValid] = useState(false);
     const [word, setWord] = useState('');
     const [fetching, setFetching] = useState(false);
@@ -39,12 +40,12 @@ export const WordChecker = (props) => {
 
         let url = '';
         let params = '';
-        if(props.language === 'en-GB') {
+        if(language === 'en-GB') {
             url = 'https://burek.it/sowpods/';
             params = new URLSearchParams({
                 word: word
             });
-        } else if(props.language === 'pl-PL') {
+        } else if(language === 'pl-PL') {
             url = 'https://burek.it/osps/files/php/osps_funkcje2.php';
             params = new URLSearchParams({
                 s: 'spr',

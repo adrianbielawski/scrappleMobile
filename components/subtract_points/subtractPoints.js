@@ -1,6 +1,7 @@
 import React from 'react';
-import { StyleSheet, View, FlatList, TextInput } from 'react-native';
-import { Formik } from 'formik';
+import { StyleSheet, View, FlatList, TextInput, Alert } from 'react-native';
+import i18next from 'i18next';
+import { Formik, isInteger } from 'formik';
 import { Header } from '../globalComponents/header';
 import { MyText } from '../globalComponents/myText';
 import { MyTransText } from '../globalComponents/myTransText';
@@ -17,16 +18,45 @@ export const SubtractPoints = ({ players, getPlaces }) => {
     }
 
     const subtractPoints = (values) => {
+        let areAllValid = true;
         const newPlayers = players.map((player, index) => {
-            if(values[`player${index}`] === undefined) {
-                return player
-            } else {
-                player.score -= parseInt(values[`player${index}`])
+            if(!areAllValid) {
+                return
             }
+            const points = values[`player${index}`];
+            if(points === undefined) {
+                return player
+            }
+            const isValid = validateUserInput(points);
+
+            if(!isValid) {
+                areAllValid = false
+                return
+            }
+            
+            player.score -= points
+            
             return player
         })
+        if(!areAllValid) {
+            return
+        }
         
         getPlaces(newPlayers)
+    }
+
+    const validateUserInput = (points) => {
+        if(points < 0 || !isInteger(points)) {
+            Alert.alert(
+                i18next.t("MustBeInt0+"),
+                '',
+                [{
+                    text: 'Ok',
+                }]
+            )
+            return
+        }
+        return true
     }
 
     return (

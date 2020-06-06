@@ -17,6 +17,7 @@ export const AddPlayer = ({ addPlayer }) => {
                 initialValues={{player: ''}}
                 onSubmit={(values, {resetForm}) => {
                     Keyboard.dismiss()
+                    resetForm()
                     addPlayer(values.player);
                     values.player = '';
                 }}
@@ -26,7 +27,7 @@ export const AddPlayer = ({ addPlayer }) => {
                         <TextInput
                             style={[globalStyles.input, styles.input]}
                             onChangeText={props.handleChange('player')}
-                            values={props.values.player}
+                            value={props.values.player}
                         />
                         <RoundButton title={'submit'} textStyle={styles.plus} onPress={props.handleSubmit}>
                             <FontAwesomeIcon style={styles.plus} icon={ faPlus } size={24} />

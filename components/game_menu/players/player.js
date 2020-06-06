@@ -94,6 +94,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         alignItems: 'center',
         justifyContent: 'space-between',
+        elevation: 0
     },
     player:{
         marginLeft: 10,
@@ -109,6 +110,7 @@ const styles = StyleSheet.create({
     },
     grabbed: {
         width: '98%',
+        zIndex: 100,
         elevation: 4,
         top: grabbedElementTop,
     }

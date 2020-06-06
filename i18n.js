@@ -42,6 +42,7 @@ const resources = {
       "MaxPlayers" : "Max 4 players",
       "add2Players" : "Please add at least 2 players",
       "MinimumTimeLimit" : "Minimum player's time limit is 1 min",
+      "MustBeInt0+" : "Points must be positive integer",
       "FinishConfirmation" : "Are you sure you want to finish this game?",
     }
   },
@@ -89,6 +90,7 @@ const resources = {
       "MaxPlayers" : "Maksymalnie 4 graczy",
       "Please add at least 2 players" : "Proszę dodać co najmniej 2 graczy",
       "MinimumTimeLimit" : "Minimalny limit czasu to 1 min",
+      "MustBeInt0" : "Liczba punktów musi być dodatnią liczbą całkowitą",
       "FinishConfirmation" : "Jesteś pewien, że chcesz zakończyć grę?",
     }
   }
