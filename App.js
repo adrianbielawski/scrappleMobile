@@ -11,8 +11,8 @@ import { GameSummary } from './components/game-summary/gameSummary';
 export default function App() {
 	const [language, setLanguage] = useState('en-GB');
 	const [screen, setScreen] = useState('GameMenu')
-	const [timer, setTimer] = useState(true);
-	const [time, setTime] = useState({min: '01', sec: '00'});
+	const [timer, setTimer] = useState(false);
+	const [time, setTime] = useState({min: '05', sec: '00'});
 	const [players, setPlayers] = useState(['Adrian', 'Joanna']);
 	const [playersSummary, setPlayersSummary] = useState([]);
 

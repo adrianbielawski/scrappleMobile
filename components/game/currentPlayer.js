@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
     },
     input: {
         height: 40,
-        fontSize: 30,
+        fontSize: 25,
         textAlign: 'center',
         color: colors.mainColor
     },

@@ -1,19 +1,15 @@
 {
   "expo": {
-    "name": "scrapplemobile",
-    "slug": "scrapplemobile",
-    "platforms": [
-      "ios",
-      "android",
-      "web"
-    ],
+    "name": "Scrapple",
+    "slug": "Scrapple",
+    "platforms": ["android"],
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/img/icon.png",
     "splash": {
-      "image": "./assets/img/logo.jpg",
+      "image": "./assets/img/logo.png",
       "resizeMode": "contain",
-      "backgroundColor": "#444"
+      "backgroundColor": "#eeeeee"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -21,8 +17,9 @@
     "assetBundlePatterns": [
       "**/*"
     ],
-    "ios": {
-      "supportsTablet": true
+    "android": {
+      "package": "host.exp.scrapple",
+      "versionCode": 3
     }
   }
 }

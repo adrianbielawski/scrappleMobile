@@ -1,13 +1,8 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, TextInput, FlatList, Alert, Keyboard } from 'react-native';
-import { Formik } from 'formik';
+import { StyleSheet, View, FlatList, Alert } from 'react-native';
 import { colors } from '../../../styles/colors';
-import { globalStyles } from '../../../styles/globalStyles';
-import { MyTransText } from '../../globalComponents/myTransText';
-import { RoundButton } from '../../globalComponents/roundButton';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { Player } from './player';
+import { AddPlayer } from '../add_player/addPlayer';
 
 export const Players = ({ players, setPlayers }) => {
     const [currentPlayers, setCurrentPlayers] = useState(players);
@@ -24,9 +19,7 @@ export const Players = ({ players, setPlayers }) => {
         return statePlayers.includes(lowPlayer) ? true : false;
     }
     
-    const addPlayer = (value) => {
-        Keyboard.dismiss()
-        const player = value.player;
+    const addPlayer = (player) => {
         const isPlayerExists = checkPlayers(player);
         
         if(currentPlayers.length >= 4) {
@@ -111,27 +104,7 @@ export const Players = ({ players, setPlayers }) => {
     
     return (
         <View style={styles.wrapper}>
-            <MyTransText>Add Player</MyTransText>
-            <Formik
-                initialValues={{player: ''}}
-                onSubmit={(values, {resetForm}) => {
-                    addPlayer(values);
-                    resetForm();
-                }}
-            >
-                {(props) => (
-                    <View style={styles.addPlayer}>
-                        <TextInput
-                            style={[globalStyles.input, styles.input]}
-                            onChangeText={props.handleChange('player')}
-                            values={props.values.player}
-                        />
-                        <RoundButton title={'submit'} textStyle={styles.plus} onPress={props.handleSubmit}>
-                            <FontAwesomeIcon style={styles.plus} icon={ faPlus } size={24} />
-                        </RoundButton>
-                    </View>
-                )}                    
-            </Formik>
+            <AddPlayer addPlayer={addPlayer}/>
             <FlatList
                 style={styles.list}
                 data={currentPlayers}

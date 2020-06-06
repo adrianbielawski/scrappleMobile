@@ -32,6 +32,7 @@ const resources = {
       "2nd place" : "2nd place",
       "3rd place" : "3rd place",
       "Total" : "Total: ",
+      "Best score" : "Best score: ",
       //Alerts
       "Yes" : "Yes",
       "No" : "No",
