@@ -18,7 +18,7 @@ export const AddPlayer = ({ addPlayer }) => {
                 onSubmit={(values, {resetForm}) => {
                     Keyboard.dismiss()
                     addPlayer(values.player);
-                    resetForm();
+                    values.player = '';
                 }}
             >
                 {(props) => (

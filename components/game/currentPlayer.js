@@ -3,7 +3,7 @@ import { Formik } from 'formik';
 import i18next from 'i18next';
 import Moment from 'react-moment';//important
 import moment from 'moment';
-import { StyleSheet, View, TextInput, Text } from 'react-native';
+import { StyleSheet, View, TextInput, Text, Alert } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faCheck } from '@fortawesome/free-solid-svg-icons'
 import { MyText } from '../globalComponents/myText';
@@ -56,8 +56,10 @@ export const CurrentPlayer = (props) => {
         return timerClass   
     }
 
-    const addPoints = (val) => {
-        props.addPoints(val.points);
+    const handleSubmit = (values) => {
+        let points = parseInt(values.points);
+        points = isNaN(points) ? 0 : points;
+        props.addPoints(points);
     }
     
     return (
@@ -72,7 +74,7 @@ export const CurrentPlayer = (props) => {
                 style={styles.addPoints}
                 initialValues={{points: ''}}
                 onSubmit={(values) => {
-                    addPoints(values);
+                    handleSubmit(values)
                 }}
             >
                 {(props) => (

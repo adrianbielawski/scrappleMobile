@@ -31,13 +31,14 @@ const styles = StyleSheet.create({
         marginBottom: 8,
         marginTop: 2,
         flex: 1,
-        width: '99%',
+        width: '97%',
         alignSelf: 'center',
-        backgroundColor: colors.offWhite,
-        elevation: 2
+        backgroundColor: '#ddd',
+        elevation: 1.5
     },
     current: {
-        backgroundColor: '#ddd'
+        backgroundColor: colors.offWhite,
+        elevation: 3
     },
     playerName: {
         fontSize: 30,

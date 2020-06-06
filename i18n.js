@@ -11,6 +11,7 @@ const resources = {
       "Player" : "Player",
       "Start game" : 'Start game',
       "Finish the game" : "Finish the game",
+      "Finish game" : "Finish game",
       "Show two-letter words" : "Show two-letter words",
       "Hide two-letter words" : "Hide two-letter words",
       "Check your word" : "Check your word",
@@ -36,12 +37,12 @@ const resources = {
       //Alerts
       "Yes" : "Yes",
       "No" : "No",
-      "Player with name {player} already exists": "Player with name {{player}} already exists",
-      "Please type in player's name" : "Please type in player's name",
-      "Max 4 players" : "Max 4 players",
-      "Please add at least 2 players" : "Please add at least 2 players",
-      "Minimum player's time limit is 1 min" : "Minimum player's time limit is 1 min",
-      "Are you sure you want to finish this game?" : "Are you sure you want to finish this game?",
+      "PlayerExists": "Player with name {{name}} already exists",
+      "TypeName" : "Please type in player's name",
+      "MaxPlayers" : "Max 4 players",
+      "add2Players" : "Please add at least 2 players",
+      "MinimumTimeLimit" : "Minimum player's time limit is 1 min",
+      "FinishConfirmation" : "Are you sure you want to finish this game?",
     }
   },
   'pl-PL': {
@@ -54,6 +55,7 @@ const resources = {
       "Player" : 'Gracz',
       "Start game" : 'Start',
       "Finish the game" : "Zakończ grę",
+      "Finish game" : "Zakończ grę",
       "Show two-letter words" : "Pokaż slowa dwuliterowe",
       "Hide two-letter words" : "Ukryj slowa dwuliterowe",
       "Check your word" : "Sprawdź słowo",
@@ -81,12 +83,13 @@ const resources = {
       //Alert
       "Yes" : "Tak",
       "No" : "Nie",
-      "Player with name {player} already exists" : "Gracz o imieniu {{player}} już istnieje",
-      "Please type in player's name" : "Proszę podać imię gracza",
-      "Max 4 players" : "Maksymalnie 4 graczy",
+      "Value must be positive number" : "Value must be positive number",
+      "PlayerExists" : "Gracz o imieniu {{name}} już istnieje",
+      "TypeName" : "Proszę podać imię gracza",
+      "MaxPlayers" : "Maksymalnie 4 graczy",
       "Please add at least 2 players" : "Proszę dodać co najmniej 2 graczy",
-      "Minimum player's time limit is 1 min" : "Minimalny limit czasu to 1 min",
-      "Are you sure you want to finish this game?" : "Jesteś pewien, że chcesz zakończyć grę?",
+      "MinimumTimeLimit" : "Minimalny limit czasu to 1 min",
+      "FinishConfirmation" : "Jesteś pewien, że chcesz zakończyć grę?",
     }
   }
 };

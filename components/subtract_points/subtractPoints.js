@@ -21,7 +21,7 @@ export const SubtractPoints = ({ players, getPlaces }) => {
             if(values[`player${index}`] === undefined) {
                 return player
             } else {
-                player.score -= values[`player${index}`]
+                player.score -= parseInt(values[`player${index}`])
             }
             return player
         })

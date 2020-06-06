@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import i18next from 'i18next';
 import { StyleSheet, View, Text, ScrollView, Alert } from 'react-native';
 import { colors } from '../../../styles/colors';
 import { Button } from '../../globalComponents/button';
@@ -70,7 +71,7 @@ export const TimePicker = ({ toggleTimePicker, setTime}) => {
     const validateTime = () => {
         if(minutes < 1) {
             Alert.alert(
-                "Minimum player's time limit is 1 min",
+                i18next.t("MinimumTimeLimit"),
                 '',
                 [{
                     text: 'Ok',

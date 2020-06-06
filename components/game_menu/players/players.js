@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, FlatList, Alert } from 'react-native';
+import i18next from 'i18next';
 import { colors } from '../../../styles/colors';
 import { Player } from './player';
 import { AddPlayer } from '../add_player/addPlayer';
@@ -24,28 +25,28 @@ export const Players = ({ players, setPlayers }) => {
         
         if(currentPlayers.length >= 4) {
             Alert.alert(
-                "Max 4 players",
+                i18next.t("MaxPlayers"),
                 '',
                 [{
-                    text: 'Ok',
+                    text: i18next.t('Ok'),
                 }])
             return
         }        
         if(isPlayerExists) {
             Alert.alert(
-                `Player with name ${player} already exists`,
+                i18next.t(`PlayerExists`, {name: player}),
                 '',
                 [{
-                    text: 'Ok',
+                    text: i18next.t('Ok'),
                 }])
             return true
         }
         if(player.length < 1) {
             Alert.alert(
-                "Please type in player's name",
+                i18next.t("TypeName"),
                 '',
                 [{
-                    text: 'Ok',
+                    text: i18next.t('Ok'),
                 }])
             return
         }

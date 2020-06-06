@@ -1,5 +1,6 @@
 import React, { useState }from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Alert } from 'react-native';
+import i18next from 'i18next';
 import { colors } from '../../styles/colors';
 import { WordChecker } from './wordChecker';
 import { TwoLetterWords } from './twoLetterWords';
@@ -12,8 +13,7 @@ export const Game = (props) => {
     const [currentPlayerNum, setCurrentPlayerNum] = useState(0);
     const [currentPlayer, setCurrentPlayer] = useState(players[currentPlayerNum])
 
-    const addPoints = (val) => {
-        const points = parseInt(val)
+    const addPoints = (points) => {
         const updatedPlayer = currentPlayer;
         updatedPlayer.score += points;
         updatedPlayer.allPoints.push(points);
@@ -41,13 +41,27 @@ export const Game = (props) => {
         setCurrentPlayer(players[nextPlayer])
     }
 
+    const handleGameFinish = () => {
+        Alert.alert(
+            i18next.t("FinishConfirmation"),
+            '',
+            [{
+                text: i18next.t("Cancel"),
+            },
+            {
+                text: i18next.t("Finish game"),
+                onPress: props.finishGame
+            }]
+        )
+    }
+
     return (
         <View style={styles.wrapper}>
             <WordChecker></WordChecker>
             <TwoLetterWords language={props.language}></TwoLetterWords>
             <CurrentPlayer player={currentPlayer} timer={props.timer} time={props.time} switchPlayer={switchPlayer} addPoints={addPoints} key={currentPlayer.id}></CurrentPlayer>
             <Stats players={players} currentPlayerNum={currentPlayerNum}></Stats>
-            <Button style={styles.button} onPress={props.finishGame}>Finish the game</Button>
+            <Button style={styles.button} onPress={handleGameFinish}>Finish the game</Button>
             <View style={{flex: 1000}}></View>
         </View>
     )    

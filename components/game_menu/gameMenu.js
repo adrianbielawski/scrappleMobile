@@ -1,5 +1,6 @@
 import React, { useState }from 'react';
 import { StyleSheet, View, Alert } from 'react-native';
+import i18next from 'i18next';
 import { Header } from '../globalComponents/header';
 import { ChooseLanguage } from './language/chooseLanguage';
 import { TimeLimit } from './time_limit/timeLimit';
@@ -14,19 +15,19 @@ export const GameMenu = (props) => {
     const validateForm = () => {
         if(timer === true && time.min < 1) {
             Alert.alert(
-                "Minimum player's time limit is 1 min",
+                i18next.t("MinimumTimeLimit"),
                 '',
                 [{
-                    text: 'Ok',
+                    text: i18next.t('Ok'),
                 }])
             return
         }
         if(players.length < 2) {
             Alert.alert(
-                "Please add at least 2 players",
+                i18next.t("add2Players"),
                 '',
                 [{
-                    text: 'Ok',
+                    text: i18next.t('Ok'),
                 }])
             return
         }
