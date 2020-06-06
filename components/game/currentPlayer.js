@@ -99,8 +99,7 @@ const styles = StyleSheet.create({
     wrapper: {
         alignItems: 'center',
     },
-    nowPlaying: {
-        
+    nowPlaying: {        
         textAlign: 'center'
     },
     playerName: {
@@ -111,6 +110,7 @@ const styles = StyleSheet.create({
         flex: 0,
         flexDirection: 'row',
         alignItems: 'center',
+        marginBottom: 5
     },
     timer: {
         flex: 0,

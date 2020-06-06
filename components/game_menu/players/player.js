@@ -85,9 +85,10 @@ const styles = StyleSheet.create({
     wrapper: {
         flex: 0,
         flexDirection: 'row',
-        marginTop: 10,
-        width: '100%',
-        backgroundColor: colors.background,
+        marginVertical: 5,
+        width: '98%',
+        backgroundColor: colors.offWhite,
+        elevation: 1,
         borderBottomWidth: 1,
         borderBottomColor: colors.borderDark,
         alignSelf: 'center',
@@ -108,7 +109,7 @@ const styles = StyleSheet.create({
     },
     grabbed: {
         width: '98%',
-        elevation: 3,
+        elevation: 4,
         top: grabbedElementTop,
     }
 });

@@ -4,6 +4,7 @@ import { Button } from '../../globalComponents/button';
 import { MyText } from '../../globalComponents/myText';
 import { PlayerStats } from './playerStats';
 import { MyTransText } from '../../globalComponents/myTransText';
+import { colors } from '../../../styles/colors';
 
 export const Player = ({ player, isPlayingNow }) => {
     const [showStats, toggleShowStats] = useState(false)
@@ -27,15 +28,19 @@ export const Player = ({ player, isPlayingNow }) => {
 
 const styles = StyleSheet.create({
     wrapper: {
-        marginBottom: 10,
+        marginBottom: 8,
+        marginTop: 2,
         flex: 1,
-        backgroundColor: '#ddd'
+        width: '99%',
+        alignSelf: 'center',
+        backgroundColor: colors.offWhite,
+        elevation: 2
     },
     current: {
-        backgroundColor: '#bbb'
+        backgroundColor: '#ddd'
     },
     playerName: {
-        fontSize: 25,
+        fontSize: 30,
         fontWeight: '700',
         textAlign: 'center'
     },
@@ -50,6 +55,6 @@ const styles = StyleSheet.create({
         flexDirection: 'row'
     },
     button: {
-        marginBottom: 5
+        marginBottom: 10
     }
 });
