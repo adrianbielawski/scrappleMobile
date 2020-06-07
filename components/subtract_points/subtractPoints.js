@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, FlatList, TextInput, Alert } from 'react-native';
+import { StyleSheet, View, FlatList, TextInput, Alert, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import i18next from 'i18next';
 import { Formik, isInteger } from 'formik';
 import { Header } from '../globalComponents/header';
@@ -60,39 +60,41 @@ export const SubtractPoints = ({ players, getPlaces }) => {
     }
 
     return (
-        <View style={styles.wrapper}>
-            <Header></Header>
-            <MyTransText style={globalStyles.title}>Subtract points of unused letters</MyTransText>
-            <Formik
-                style={styles.list}
-                initialValues={getValues}
-                onSubmit={(values) => {
-                    subtractPoints(values);
-                }}
-            >
-                {(props) => (
-                    <View>
-                        <FlatList
-                            data={players}
-                            keyExtractor={(item, index) => index.toString()}
-                            renderItem={({item, index}) => (
-                                <View style={styles.playerWrapper}>
-                                    <MyText style={styles.name}>{item.name}</MyText>
-                                    <TextInput
-                                        style={[globalStyles.input, styles.input]}
-                                        onChangeText={props.handleChange(`player${index}`)}
-                                        placeholder={'0'}
-                                        keyboardType={'numeric'}
-                                    />
-                                </View>
-                            )}
-                        >
-                        </FlatList>
-                        <Button style={styles.button} onPress={props.handleSubmit}>Continue</Button>
-                    </View>                                 
-                )}                    
-            </Formik>
-        </View>
+        <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+            <View style={styles.wrapper}>
+                <Header></Header>
+                <MyTransText style={globalStyles.title}>Subtract points of unused letters</MyTransText>
+                <Formik
+                    style={styles.list}
+                    initialValues={getValues}
+                    onSubmit={(values) => {
+                        subtractPoints(values);
+                    }}
+                >
+                    {(props) => (
+                        <View>
+                            <FlatList
+                                data={players}
+                                keyExtractor={(item, index) => index.toString()}
+                                renderItem={({item, index}) => (
+                                    <View style={styles.playerWrapper}>
+                                        <MyText style={styles.name}>{item.name}</MyText>
+                                        <TextInput
+                                            style={[globalStyles.input, styles.input]}
+                                            onChangeText={props.handleChange(`player${index}`)}
+                                            placeholder={'0'}
+                                            keyboardType={'numeric'}
+                                        />
+                                    </View>
+                                )}
+                            >
+                            </FlatList>
+                            <Button style={styles.button} onPress={props.handleSubmit}>Continue</Button>
+                        </View>                                 
+                    )}                    
+                </Formik>
+            </View>
+        </TouchableWithoutFeedback>
     )    
 }
 

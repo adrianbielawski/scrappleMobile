@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, TouchableWithoutFeedback, TouchableOpacity } from 'react-native';
 import { colors } from '../../../styles/colors';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
@@ -65,6 +65,7 @@ export const Player = ({ player, index, removePlayer, moveUp, moveDown, setGrabb
             style={getElementStyle()}
             onLayout={(e) => {getElementD(e.nativeEvent.layout)}}>
                 <View
+                    onStartShouldSetResponder={() => true}
                     style={styles.player}
                     onTouchStart={(e) => {handleGrab(e)}}
                     onTouchEnd={(e) => {handleDrop(e)}}

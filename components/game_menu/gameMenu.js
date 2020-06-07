@@ -1,5 +1,5 @@
 import React, { useState }from 'react';
-import { StyleSheet, View, Alert } from 'react-native';
+import { StyleSheet, View, Alert, Keyboard, TouchableWithoutFeedback } from 'react-native';
 import i18next from 'i18next';
 import { Header } from '../globalComponents/header';
 import { ChooseLanguage } from './language/chooseLanguage';
@@ -35,19 +35,21 @@ export const GameMenu = (props) => {
     }
 
     return (
-        <View>
-            <Header />
+        <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
             <View>
-                <ChooseLanguage language={props.language} changeLanguage={props.changeLanguage}/>
-                <TimeLimit
-                    toggleTimer={() => {toggleTimer(!timer)}}
-                    setTimeLimit={(min, sec) => {setTime({min, sec})}}
-                    timer={timer}
-                    defaultTime={time}/>
-                <Players setPlayers={(newPlayers) => {setPlayers(newPlayers)}} players={players}/>
-                <Button onPress={validateForm} style={styles.button}>Start game</Button>
+                <Header />
+                <View>
+                    <ChooseLanguage language={props.language} changeLanguage={props.changeLanguage}/>
+                    <TimeLimit
+                        toggleTimer={() => {toggleTimer(!timer)}}
+                        setTimeLimit={(min, sec) => {setTime({min, sec})}}
+                        timer={timer}
+                        defaultTime={time}/>
+                    <Players setPlayers={(newPlayers) => {setPlayers(newPlayers)}} players={players}/>
+                    <Button onPress={validateForm} style={styles.button}>Start game</Button>
+                </View>
             </View>
-        </View>
+        </TouchableWithoutFeedback>
     )    
 }
 

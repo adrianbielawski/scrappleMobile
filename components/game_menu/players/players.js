@@ -107,6 +107,7 @@ export const Players = ({ players, setPlayers }) => {
         <View style={styles.wrapper}>
             <AddPlayer addPlayer={addPlayer}/>
             <FlatList
+            onStartShouldSetResponder={() => true}
                 style={styles.list}
                 data={currentPlayers}
                 keyExtractor={(item, index) => index.toString()}

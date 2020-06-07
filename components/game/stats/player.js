@@ -10,7 +10,10 @@ export const Player = ({ player, isPlayingNow }) => {
     const [showStats, toggleShowStats] = useState(false)
     
     return (
-        <View style={isPlayingNow ? [styles.wrapper, styles.current] : [styles.wrapper]}>
+        <View
+            style={isPlayingNow ? [styles.wrapper, styles.current] : [styles.wrapper]}
+            onStartShouldSetResponder={() => true}
+        >
             <MyText style={styles.playerName}>{player.name}</MyText>
             <View style={styles.scoreWrapper}>
                 <View style={styles.score}>
