@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { StyleSheet, View, FlatList, Alert } from 'react-native';
 import i18next from 'i18next';
 import { colors } from '../../../styles/colors';
+import { globalStyles } from '../../../styles/globalStyles'
 import { Player } from './player';
-import { AddPlayer } from '../add_player/addPlayer';
+import { AddPlayer } from './addPlayer';
 
 export const Players = ({ players, setPlayers }) => {
     const [currentPlayers, setCurrentPlayers] = useState(players);
@@ -92,7 +93,7 @@ export const Players = ({ players, setPlayers }) => {
         if(newIndex < 1) {
             newIndex = 0;
         } else if(newIndex >= currentPlayers.length) {
-            newIndex = currentPlayers.players.length -1;
+            newIndex = currentPlayers.length -1;
         }
         
         newPlayers.splice(newIndex, 0, currentPlayers.splice(index, 1)[0]);
@@ -104,10 +105,9 @@ export const Players = ({ players, setPlayers }) => {
     }
     
     return (
-        <View style={styles.wrapper}>
+        <View style={[globalStyles.elevatedWrapper, styles.wrapper]}>
             <AddPlayer addPlayer={addPlayer}/>
             <FlatList
-            onStartShouldSetResponder={() => true}
                 style={styles.list}
                 data={currentPlayers}
                 keyExtractor={(item, index) => index.toString()}
@@ -131,11 +131,11 @@ export const Players = ({ players, setPlayers }) => {
 
 const styles = StyleSheet.create({
     wrapper: {
-        marginTop: 10,
         alignSelf: 'center',
         alignItems: 'center',
-        minWidth: 350,
-        width: '50%'
+        maxWidth: 400,
+        paddingTop: 5,
+        zIndex: -10,
     },
     input: {
         textAlign: 'center',
@@ -144,7 +144,6 @@ const styles = StyleSheet.create({
         height: 40,
         fontSize: 25,
         color: colors.mainColor,
-        fontWeight: '700'
     },
     addPlayer: {
         flex: 0,

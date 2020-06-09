@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
+import { useFonts } from '@use-expo/font';
+import { AppLoading } from 'expo';
 import i18n from './i18n';
 import './i18n';
 import { colors } from './styles/colors';
@@ -9,11 +11,16 @@ import { SubtractPoints } from './components/subtract_points/subtractPoints';
 import { GameSummary } from './components/game-summary/gameSummary';
 
 export default function App() {
+	let [fontsLoaded] = useFonts({
+		'nunito-regular': require('./assets/fonts/Nunito-Regular.ttf'),
+		'nunito-bold': require('./assets/fonts/Nunito-Bold.ttf'),
+		'nunito-extraBold': require('./assets/fonts/Nunito-ExtraBold.ttf'),
+	});
 	const [language, setLanguage] = useState('en-GB');
 	const [screen, setScreen] = useState('GameMenu')
 	const [timer, setTimer] = useState(false);
 	const [time, setTime] = useState({min: '05', sec: '00'});
-	const [players, setPlayers] = useState(['Adrian', 'Joanna']);
+	const [players, setPlayers] = useState([]);
 	const [playersSummary, setPlayersSummary] = useState([]);
 
 	const changeLanguage = (lang) => {
@@ -125,11 +132,17 @@ export default function App() {
 		return content
 	}
 
-	return (
-		<View style={styles.container}>
-			{getContent()}
-		</View>
-	);
+	if(fontsLoaded) {
+		return (
+			<View style={styles.container}>
+				{getContent()}
+			</View>
+		);
+	} else {
+		return (
+			<AppLoading />
+		)
+	}
 }
 
 const styles = StyleSheet.create({

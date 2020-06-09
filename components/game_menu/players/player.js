@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, TouchableWithoutFeedback, TouchableOpacity } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { colors } from '../../../styles/colors';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
@@ -84,18 +84,19 @@ export const Player = ({ player, index, removePlayer, moveUp, moveDown, setGrabb
 
 const styles = StyleSheet.create({
     wrapper: {
-        flex: 0,
-        flexDirection: 'row',
-        marginVertical: 5,
-        width: '98%',
+        marginVertical: 2,
+        minWidth: 320,
+        maxWidth: 350,
+        width: '100%',
         backgroundColor: colors.offWhite,
-        elevation: 1,
         borderBottomWidth: 1,
         borderBottomColor: colors.borderDark,
+        flexDirection: 'row',
         alignSelf: 'center',
         alignItems: 'center',
         justifyContent: 'space-between',
-        elevation: 0
+        elevation: .5,
+        zIndex: -1
     },
     player:{
         marginLeft: 10,
@@ -103,15 +104,16 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     playerName: {
-        fontWeight: '700',
-        width: '60%',
+        fontFamily: 'nunito-extraBold',
+        fontSize: 26,
+        width: '55%',
     },
     faTimes: {
         color: '#fff'
     },
     grabbed: {
         width: '98%',
-        zIndex: 100,
+        zIndex: 1,
         elevation: 4,
         top: grabbedElementTop,
     }

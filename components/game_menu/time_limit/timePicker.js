@@ -83,7 +83,7 @@ export const TimePicker = ({ toggleTimePicker, setTime}) => {
     }
     return (
         <View style={styles.wrapper}>
-            <View style={styles.chooseTime}>
+            <View style={styles.picker} onStartShouldSetResponder={() => true}>
                 <ScrollView
                     ref={ref => minScroll = ref}
                     onScroll={handleScrollMin}
@@ -101,7 +101,7 @@ export const TimePicker = ({ toggleTimePicker, setTime}) => {
                 </ScrollView>
             </View>
             <View style={styles.buttons}>
-                <Button onPress={toggleTimePicker}>Cancel</Button>
+                <Button style={{zIndex: 1000}} onPress={toggleTimePicker}>Cancel</Button>
                 <Button onPress={validateTime}>Ok</Button>
             </View>
         </View>
@@ -111,9 +111,7 @@ export const TimePicker = ({ toggleTimePicker, setTime}) => {
 const styles = StyleSheet.create({
     wrapper: {
         position: 'absolute',
-        top: 35,
-        zIndex: 10,
-        flex: 0,
+        top: -40,
         alignSelf: 'center',
         alignItems: 'center',
         backgroundColor: colors.offWhite,
@@ -121,19 +119,18 @@ const styles = StyleSheet.create({
         borderColor: colors.borderDark,
         maxWidth: 250,
         padding: 10,
-        elevation: 4,
+        elevation: 60,
     },
-    chooseTime: {
+    picker: {
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        marginBottom: 10,
         width: 135
     },
     timeScroll: {
         alignContent: 'center',
         height: 120,
-        width:50,
+        width: 50,
         marginHorizontal: 5,
         borderLeftWidth: 1,
         borderRightWidth: 1,

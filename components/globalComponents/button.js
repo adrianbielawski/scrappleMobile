@@ -1,12 +1,14 @@
 import React from 'react';
-import { StyleSheet, TouchableOpacity } from 'react-native';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import { colors } from '../../styles/colors';
 import { MyTransText } from '../globalComponents/myTransText';
 
 export const Button = (props) => {
     return (
-        <TouchableOpacity style={[styles.button, props.style]} onPress={props.onPress}>
-            <MyTransText style={[styles.buttonText, props.textStyle]}>{props.children}</MyTransText>
+        <TouchableOpacity onPress={props.onPress}>
+            <View style={[styles.button, props.style]}>
+                <MyTransText style={[styles.buttonText, props.textStyle]}>{props.children}</MyTransText>
+            </View>
         </TouchableOpacity>
     )    
 }
@@ -15,6 +17,7 @@ const styles = StyleSheet.create({
     button: {
         flex: 0,
         alignItems: 'center',
+        justifyContent: 'center',
         borderWidth: 1,
         borderColor: colors.borderLight,
         backgroundColor: colors.mainColor,
@@ -29,7 +32,7 @@ const styles = StyleSheet.create({
     },
     buttonText: {
         color: '#fff',
-        fontWeight: '700',
-        fontSize: 20,
+        fontFamily: 'nunito-extraBold',
+        fontSize: 22,
     }
 });

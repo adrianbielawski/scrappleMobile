@@ -36,7 +36,7 @@ export const GameMenu = (props) => {
 
     return (
         <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-            <View>
+            <View style={styles.wrapper}>
                 <Header />
                 <View>
                     <ChooseLanguage language={props.language} changeLanguage={props.changeLanguage}/>
@@ -46,7 +46,7 @@ export const GameMenu = (props) => {
                         timer={timer}
                         defaultTime={time}/>
                     <Players setPlayers={(newPlayers) => {setPlayers(newPlayers)}} players={players}/>
-                    <Button onPress={validateForm} style={styles.button}>Start game</Button>
+                    <Button onPress={validateForm} style={[styles.button, players.length <= 1 && styles.disabledButton]}>Start game</Button>
                 </View>
             </View>
         </TouchableWithoutFeedback>
@@ -54,9 +54,11 @@ export const GameMenu = (props) => {
 }
 
 const styles = StyleSheet.create({
+    disabledButton: {
+        backgroundColor: '#aaa',
+        opacity: .7
+    },
     button: {
-        marginTop: 20,
-        maxWidth: 200,
-        alignSelf: 'center'
-    }
+        alignSelf: 'center',
+    },
 });

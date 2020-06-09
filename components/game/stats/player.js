@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
         marginBottom: 8,
         marginTop: 2,
         flex: 1,
-        width: '97%',
+        width: '98%',
         alignSelf: 'center',
         backgroundColor: '#ddd',
         elevation: 1.5

@@ -1,5 +1,5 @@
 import React, { useState, useEffect }from 'react';
-import { StyleSheet, FlatList } from 'react-native';
+import { StyleSheet, FlatList, View } from 'react-native';
 import { Player } from './player';
 
 export const Stats = (props) => {
@@ -30,6 +30,7 @@ export const Stats = (props) => {
 
 const styles = StyleSheet.create({
     list: {
+        flex: 0,
         width: '95%',
         minWidth: 300,
         maxWidth: 450,

@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
     imgContainer: {
         flexDirection: 'row',
         paddingTop: 23,
-        marginBottom: 20,
+        marginBottom: 10,
         backgroundColor: colors.mainColor
     },
     img: {

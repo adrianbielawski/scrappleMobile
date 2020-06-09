@@ -3,6 +3,8 @@ import i18n from '../../../i18n';
 import { StyleSheet, View, Image, TouchableOpacity } from 'react-native';
 import { MyTransText } from '../../globalComponents/myTransText';
 import { Language } from './language';
+import { colors } from '../../../styles/colors';
+import { globalStyles } from '../../../styles/globalStyles'
 
 export const ChooseLanguage = ( {language, changeLanguage} ) => {
     const [currentLanguage, setCurrentLanguage] = useState(language)
@@ -34,7 +36,7 @@ export const ChooseLanguage = ( {language, changeLanguage} ) => {
     const languagesStyle = showLanguages ? styles.showLanguages : '';
 
     return (
-        <View style={styles.chooseLanguage}>
+        <View style={globalStyles.elevatedWrapper}>
             <TouchableOpacity onPress={toggleShowLanguages}>
                 <View style={styles.language}>
                     <Image style={styles.langImg} source={languages[currentLanguage].flag} />
@@ -51,28 +53,21 @@ export const ChooseLanguage = ( {language, changeLanguage} ) => {
 }
 
 const styles = StyleSheet.create({
-    chooseLanguage: {
-        alignSelf: 'center',
-        flex: 0,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
     langImg: {
         alignSelf: 'center',
         marginRight: 10,
     },
     languages: {
         flexDirection: 'row',
-        marginTop: 10,
         height: 0,
         overflow: 'hidden'
     },
     showLanguages: {
+        marginTop: 10,
         height: 'auto',
     },
     language: {
         flexDirection: 'row',
         alignItems: 'center',
-        marginHorizontal: 15,
     },
 });

@@ -32,8 +32,8 @@ export const GameSummary = ({ players, exitGame }) => {
                             </View>
                             <MyText style={styles.name}>{item.name}</MyText>
                             <View style={styles.resoult}>
-                                <MyText>{i18next.t('Total', {score: item.score})}<MyText style={styles.score}>{item.score}</MyText></MyText>
-                                <MyText>{i18next.t('Best score', {score: item.bestScore})}<MyText style={styles.score}>{item.bestScore}</MyText></MyText>
+                                <MyText style={styles.score}>{i18next.t('Total', {score: item.score})}<MyText style={styles.scoreNum}>{item.score}</MyText></MyText>
+                                <MyText style={styles.score}>{i18next.t('Best score', {score: item.bestScore})}<MyText style={styles.scoreNum}>{item.bestScore}</MyText></MyText>
                             </View>
                         </View>
                     )}
@@ -52,6 +52,7 @@ const styles = StyleSheet.create({
     list: {
         flex: 0,
         width: '98%',
+        maxHeight: '100%',
         alignSelf: 'center'
     },
     playerWrapper: {
@@ -85,10 +86,14 @@ const styles = StyleSheet.create({
     },
     button: {
         width: 250,
-        marginTop: 10,
+        marginTop: 5,
         alignSelf: 'center'
     },
     score: {
+        height: 30,
+        textAlignVertical: 'bottom'
+    },
+    scoreNum: {
         fontSize: 25,
         lineHeight: 25,
         fontWeight: '700'

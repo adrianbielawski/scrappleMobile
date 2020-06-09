@@ -28,7 +28,7 @@ export const TimeLimit = ({ setTimeLimit, defaultTime, toggleTimer, timer}) => {
     }
 
     return (
-        <View style={styles.wrapper}>
+        <View style={globalStyles.elevatedWrapper}>
             <View style={styles.timer}>
                 <Switch
                     style={styles.switch}
@@ -39,7 +39,7 @@ export const TimeLimit = ({ setTimeLimit, defaultTime, toggleTimer, timer}) => {
                 <MyTransText>Player's time limit</MyTransText>
             </View>
             <TouchableOpacity onPress={toggleTimePicker}>
-                <View style={[globalStyles.input, showTimer ? styles.showInput : styles.hiddenInput]} >
+                <View style={[globalStyles.input, styles.input, showTimer && styles.showInput]} >
                     <Text style={styles.time}>{min}:{sec}</Text>
                 </View>
             </TouchableOpacity>
@@ -49,31 +49,27 @@ export const TimeLimit = ({ setTimeLimit, defaultTime, toggleTimer, timer}) => {
 }
 
 const styles = StyleSheet.create({
-    wrapper: {
-        alignSelf: 'center',
-        alignItems: 'center',
-    },
     timer: {
-        flex: 0,
         flexDirection: 'row',
-        marginBottom: 10
     },
     switch: {
-        marginRight: 10
+        marginRight: 5,
+        marginLeft: -10
     },
-    hiddenInput: {
+    input: {
+        width: 150,
         height: 0,
         borderWidth: 0,
         overflow: 'hidden'
     },
     showInput: {
+        marginTop: 10,
         height: 'auto',
         borderWidth: 1,
     },
     time: {
         color: colors.mainColor,
-        fontWeight: '700',
-        fontSize: 30,
-        
+        fontFamily:'nunito-extraBold',
+        fontSize: 34,
     }
 });

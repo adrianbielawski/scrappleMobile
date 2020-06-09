@@ -10,7 +10,8 @@ export const MyTransText = (props) => {
 
 const styles = StyleSheet.create({
     text: {        
-        fontSize: 20,
-        color: '#444'
+        fontSize: 22,
+        color: '#444',
+        fontFamily: 'nunito-regular' 
     }
 });

@@ -11,7 +11,7 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons'
 export const AddPlayer = ({ addPlayer }) => {
     
     return (
-        <View style={styles.wrapper}>
+        <View style={[styles.wrapper]}>
             <MyTransText>Add Player</MyTransText>
             <Formik
                 initialValues={{player: ''}}
@@ -41,25 +41,21 @@ export const AddPlayer = ({ addPlayer }) => {
 
 const styles = StyleSheet.create({
     wrapper: {
-        marginTop: 10,
-        alignSelf: 'center',
         alignItems: 'center',
-        minWidth: 350,
-        width: '50%'
+        zIndex: -1,
     },
     input: {
         textAlign: 'center',
         minWidth: 250,
         marginRight: 5,
         height: 40,
-        fontSize: 25,
+        fontSize: 26,
         color: colors.mainColor,
-        fontWeight: '700'
     },
     addPlayer: {
-        flex: 0,
+        marginTop: 10,
         flexDirection: 'row',
-        alignItems: 'center'
+        alignItems: 'center',
     },
     plus: {
         color: '#fff',
